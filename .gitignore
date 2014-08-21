@@ -1,3 +1,9 @@
+# temp
+.swp
+.db
+.tmp
+
+# python
 .pyc
 .sqlite
 .sqlite3
