@@ -67,7 +67,7 @@ DATABASES = {
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django',
+        'NAME': 'hobototes',
         'USER': 'aaron',
         'PASSWORD': '0858324',
         'HOST': '127.0.0.1',
@@ -94,3 +94,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+# Google: django set-0-id (2014-08-05)
+# https://code.djangoproject.com/ticket/17653
+# SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+
+# Local-memory caching
+# https://docs.djangoproject.com/en/1.5/topics/cache/
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake'
+    }
+}
