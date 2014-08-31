@@ -80,16 +80,40 @@ class Topic(models.Model): #Topic
         # db_table = 'product_topic'
 
 class Source(models.Model):
-# The original order
+    STATUS = (
+        ('inbox', 'inbox'),
+        ('reject', 'reject'),
+        ('approved', 'approved'),
+        ('bought', 'bought'),
+        ('watch list', 'watch list'),
+        ('expired', 'expried'), # https://gist.github.com/Nagyman/9502133
+        )
+    # 2014-08-02
+    COMMENTS = (
+        ('bad', 'bad'),
+        ('ok', 'seems ok'),
+        ('good', 'Good!'),
+        )
+
+    SERIES = (
+        ('Fashionable', 'Fashionable'),
+        ('Home & Garden', 'Home & Garden'),
+        ('Not-another series', 'Not-another series'),
+        )
+
+    TYPES = (
+
+        )
+
     # id = models.IntegerField(primary_key=True)  # AutoField
     date = models.DateField(auto_now_add = True)
-    # updated_at = models.DateTimeField(auto_now = True)
+    modified= models.DateTimeField(auto_now = True)
     topic = models.ForeignKey('topic', default=25) # defautl=25 is a virtual topic
-    # series = models.CharField(max_length=16, choices=SERIES)
+    series = models.CharField(max_length=16, choices=SERIES)
     types = models.CharField(max_length=16, blank=True, null=True)
     link = models.URLField()
-    status = models.CharField(max_length=20)
-    # status = models.CharField(max_length=20, choices=STATUS, default='inbox', help_text='The workflow. Make decision to buy it or not')
+    # status = models.CharField(max_length=20)
+    status = models.CharField(max_length=20, choices=STATUS, default='inbox', help_text='The workflow. Make decision to buy it or not')
     shop = models.CharField(max_length=50, blank=True, help_text='25 means this product is a virtual product.')
     title = models.CharField(max_length=1000, blank=True)
     material = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
@@ -99,8 +123,7 @@ class Source(models.Model):
         help_text='The possible lowest purchase.')
     quantity_of_min_purchase = models.PositiveIntegerField(blank=True, null=True)
     remark = models.CharField(max_length=255, blank=True)
-    # 2014-08-02
-    acceptability = models.CharField(max_length=4, blank=True, #choices=COMMENTS, 
+    acceptability = models.CharField(max_length=4, blank=True, choices=COMMENTS, 
         help_text='A reference from buyers\' comments (aka. The product quality). Help to make decision on buy it or not. "Good" does not mean to buy')
     ref = models.TextField(verbose_name=_("The way it was found"), blank=True)
     # # is_good_product
