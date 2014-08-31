@@ -68,7 +68,7 @@ class Topic(models.Model): #Topic
     status = models.CharField(max_length=16, choices=STATUS, default='new')
     tag = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
     # is_virtual_product = # build for a themetic product grouping
-    price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
+    price = models.DecimalField(max_digits=6, decimal_places=2, null=True, help_text='In US Dollar')
 # purchase_adjectment = models.DecimalField(max_digits=6, decimal_places=2, default=0) #TODO
     key_idea = models.TextField(blank=True, help_text='Use | to separate ideas')
     remark = models.CharField(max_length=255, blank=True, verbose_name=_('Remark / Description /Features'))
@@ -92,7 +92,7 @@ class Topic(models.Model): #Topic
     #     return u'USD %2f,  RMB %f2' %(max_purchase, max_purchase * USD2RMB)
 
 
-    # The second leg fee used in find_max_purchase()
+    # The second leg fee (postage) used in find_max_purchase()
     # https://docs.python.org/2/tutorial/datastructures.html#dictionaries
     def find_postage_fee(self): # REMEMBER: size -> weight
         postage_fee = {'light': 80, 'medium': 120, 'heavy':173} # the key is the stored data in database: 'light', 'medium', 'heavy'
@@ -113,15 +113,15 @@ class Topic(models.Model): #Topic
         USD2RMB = Decimal('6.20')
         USD2HKD = Decimal('7.75')
 
-        #In USD
+        # calculation in USD
         price = Decimal(self.price) # str to Decimal
         ebay_commision = price * Decimal('0.10')
         paypal_commision = price *  Decimal('0.039') + Decimal('0.30')
         packing = Decimal('1.20')
         # first_leg = Decimal('16')/USD2HKD #HKD16 to USD
-        first_leg = (self.find_first_leg_fee())/USD2HKD #HKD16 to USD
+        first_leg = (self.find_first_leg_fee())/USD2HKD #HKDto USD
         # second_leg =  Decimal('173')/USD2HKD # HKD150 to USD
-        second_leg = (self.find_postage_fee())/USD2HKD
+        second_leg = (self.find_postage_fee())/USD2HKD # postage, HKD to USD
         additional_fee = Decimal('1.00')
         max_purchase = price - (ebay_commision + paypal_commision + packing + first_leg + second_leg + additional_fee) 
         
