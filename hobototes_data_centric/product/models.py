@@ -72,6 +72,22 @@ class Topic(models.Model): #Topic
     def __str__(self):              # __unicode__ on Python 2
         return u'%s. %s (USD %d)' %(self.id, self.title, self.price,)
 
+    # the draft version
+    def find_max_purchase(self):
+        USD2RMB = 6.20
+        USD2HKD = 7.75
+
+        #In USD
+        price = float(self.price) # need type casting
+        ebay_commision = price * 0.1
+        paypal_commision = price * (0.039) + 0.3
+        packing = 1.2
+        first_leg = 16/7.75 #HKD16 to USD
+        second_leg = 150/7.75 # HKD150 to USD
+        max_purchase = price - (ebay_commision + paypal_commision + packing + first_leg + second_leg)
+        return u'USD %2f,  RMB %f2' %(max_purchase, max_purchase * USD2RMB)
+
+
     class Meta:
         managed = True
         verbose_name = "Product Topic"
