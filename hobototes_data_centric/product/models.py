@@ -48,8 +48,11 @@ class Seller(models.Model):
     # telphone = models.CharField(max_length=12)
     # wechat = models.CharField(max_length=20)
     # address = models.CharField(max_length=100)
-    rating = models.IntegerField(default=3, verbose_name='1 to 5 stars')
+    rating = models.IntegerField(default=3, help_text='1 to 5 stars')
     remark = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):              # __unicode__ on Python 2
+        return u'%s. %s :: %s' %(self.id, self.shop, self.name,)
 
 class Topic(models.Model): #Topic
 
@@ -71,8 +74,8 @@ class Topic(models.Model): #Topic
     modified = models.DateTimeField(auto_now=True)
     size = models.CharField(max_length=10, blank=True, 
                                                 choices=WEIGHT_CHOICE, default='medium')
-    seller= models.IntegerField(default=1, help_text='#1 reserves for virtual seller.')
-    # seller= models.ForeignKey('Seller', default=1,  help_text='#1 reserves for virtual seller.')
+    # seller= models.IntegerField(default=1, help_text='#1 reserves for virtual seller.')
+    seller= models.ForeignKey('Seller', default=1,  help_text='#1 reserves for virtual seller.')
     # is_virtual_product = # build for a themetic product grouping
     title = models.CharField(max_length=255)
     link = models.URLField(max_length=250,  blank=True)
