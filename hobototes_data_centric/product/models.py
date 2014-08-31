@@ -41,6 +41,16 @@ from django.core.urlresolvers import reverse
 #         verbose_name_plural = "Blog Entries"
 #         ordering = ["-created"]
 
+class Seller(models.Model):
+    # pass
+    shop = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
+    # telphone = models.CharField(max_length=12)
+    # wechat = models.CharField(max_length=20)
+    # address = models.CharField(max_length=100)
+    rating = models.IntegerField(default=3, verbose_name='1 to 5 stars')
+    remark = models.CharField(max_length=255, blank=True)
+
 class Topic(models.Model): #Topic
 
     WEIGHT_CHOICE = (
