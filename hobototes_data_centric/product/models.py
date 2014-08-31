@@ -124,7 +124,14 @@ class Topic(models.Model): #Topic
         second_leg = (self.find_postage_fee())/USD2HKD # postage, HKD to USD
         additional_fee = Decimal('1.00')
         max_purchase = price - (ebay_commision + paypal_commision + packing + first_leg + second_leg + additional_fee) 
-        
+
+        if price <= 0:
+            return 'You might set a price first'
+        elif max_purchase <= second_leg:
+            return '$ %s? But the postage fee (%s) is higher than the selling price!' % (format(max_purchase, '0.2f'),  format(second_leg, '0.2f'))
+        elif max_purchase <= 0: #<=second_leg?
+            return '$ %s? Probably it is not a suitable product :-P' % format(max_purchase, '0.2f')
+
         return u'US %s,  RMB %s' %(format(max_purchase, '0.2f'), format(max_purchase * USD2RMB, '0.2f') )
 
 
