@@ -134,4 +134,7 @@ class Source(models.Model):
  
     class Meta:
         managed = True
+        verbose_name = "Source"
+        verbose_name_plural = "Sources"
+        ordering = ['-modified']
         # db_table = 'competitor_sources'
