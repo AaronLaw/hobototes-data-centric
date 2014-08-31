@@ -62,12 +62,12 @@ class Topic(models.Model): #Topic
     size = models.CharField(max_length=10, blank=True, 
                                                 choices=WEIGHT_CHOICE, default='medium')
     seller= models.IntegerField(default=1, help_text='#1 reserves for virtual seller.')
-    # seller= models.ForeignKey('Seller', default=0)
+    # seller= models.ForeignKey('Seller', default=1,  help_text='#1 reserves for virtual seller.')
+    # is_virtual_product = # build for a themetic product grouping
     title = models.CharField(max_length=255)
     link = models.URLField(max_length=250,  blank=True)
     status = models.CharField(max_length=16, choices=STATUS, default='new')
     tag = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
-    # is_virtual_product = # build for a themetic product grouping
     price = models.DecimalField(max_digits=6, decimal_places=2, null=True, help_text='In US Dollar')
 # purchase_adjectment = models.DecimalField(max_digits=6, decimal_places=2, default=0) #TODO
     key_idea = models.TextField(blank=True, help_text='Use | to separate ideas')
@@ -127,12 +127,13 @@ class Topic(models.Model): #Topic
 
         if price <= 0:
             return 'You might set a price first'
-        elif max_purchase <= second_leg:
-            return '$ %s? But the postage fee (%s) is higher than the selling price!' % (format(max_purchase, '0.2f'),  format(second_leg, '0.2f'))
+        elif price <= second_leg:
+            return 'USD %s? But the postage fee (%s) is higher than the selling price! (detal=USD %s)' % (
+                format(max_purchase, '0.2f'),  format(second_leg, '0.2f'), format(abs(max_purchase-second_leg ) , '0.2f')  )
         elif max_purchase <= 0: #<=second_leg?
             return '$ %s? Probably it is not a suitable product :-P' % format(max_purchase, '0.2f')
 
-        return u'US %s,  RMB %s' %(format(max_purchase, '0.2f'), format(max_purchase * USD2RMB, '0.2f') )
+        return 'US %s,  RMB %s' %(format(max_purchase, '0.2f'), format(max_purchase * USD2RMB, '0.2f') )
 
 
     class Meta:
@@ -164,7 +165,7 @@ class Source(models.Model):
         ('Not-another series', 'Not-another series'),
         )
 
-    TYPES = (
+    TYPES = ( #Tote, Hobo, etc....better store in the other model
 
         )
 
@@ -200,4 +201,4 @@ class Source(models.Model):
         verbose_name = "Source"
         verbose_name_plural = "Sources"
         ordering = ['-modified']
-        # db_table = 'competitor_sources'
+        # db_table = 'sources'
