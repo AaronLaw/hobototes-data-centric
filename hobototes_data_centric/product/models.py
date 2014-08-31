@@ -92,6 +92,18 @@ class Topic(models.Model): #Topic
     #     return u'USD %2f,  RMB %f2' %(max_purchase, max_purchase * USD2RMB)
 
 
+    # The second leg fee used in find_max_purchase()
+    # https://docs.python.org/2/tutorial/datastructures.html#dictionaries
+    def find_postage_fee(self): # REMEMBER: size -> weight
+        postage_fee = {'light': 80, 'medium': 120, 'heavy':173} # the key is the stored data in database: 'light', 'medium', 'heavy'
+        if self.size == '': # prevents bag with no size, lead to calculation error in the admin
+            self.size == 'medium'
+        return postage_fee[self.size]
+
+    def find_first_leg_fee(self): # REMEMBER: size -> weight
+        first_leg = {'light': 10, 'medium': 16, 'heavy': 16}
+        return first_leg[self.size]
+
     # Work in the same way as the arithmetic that people learn at school.
     # By using Decimal instead of float
     # Google: python float vs decimal
@@ -106,8 +118,10 @@ class Topic(models.Model): #Topic
         ebay_commision = price * Decimal('0.10')
         paypal_commision = price *  Decimal('0.039') + Decimal('0.30')
         packing = Decimal('1.20')
-        first_leg = Decimal('16')/USD2HKD #HKD16 to USD
-        second_leg =  Decimal('173')/USD2HKD # HKD150 to USD
+        # first_leg = Decimal('16')/USD2HKD #HKD16 to USD
+        first_leg = (self.find_first_leg_fee())/USD2HKD #HKD16 to USD
+        # second_leg =  Decimal('173')/USD2HKD # HKD150 to USD
+        second_leg = (self.find_postage_fee())/USD2HKD
         additional_fee = Decimal('1.00')
         max_purchase = price - (ebay_commision + paypal_commision + packing + first_leg + second_leg + additional_fee) 
         
