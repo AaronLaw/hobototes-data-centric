@@ -108,15 +108,13 @@ class Source(models.Model):
     # id = models.IntegerField(primary_key=True)  # AutoField
     date = models.DateField(auto_now_add = True)
     modified= models.DateTimeField(auto_now = True)
+    link = models.URLField()
+    title = models.CharField(max_length=1000, blank=True)
     topic = models.ForeignKey('topic', default=25) # defautl=25 is a virtual topic
+    shop = models.CharField(max_length=50, blank=True, help_text='25 means this product is a virtual product.')
     series = models.CharField(max_length=16, choices=SERIES)
     types = models.CharField(max_length=16, blank=True, null=True)
-    link = models.URLField()
-    # status = models.CharField(max_length=20)
-    status = models.CharField(max_length=20, choices=STATUS, default='inbox', help_text='The workflow. Make decision to buy it or not')
-    shop = models.CharField(max_length=50, blank=True, help_text='25 means this product is a virtual product.')
-    title = models.CharField(max_length=1000, blank=True)
-    material = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
+    tags = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
     purchase = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     min_quantity = models.PositiveIntegerField(blank=True, default=1, help_text='The starting quantity of purchase')
     min_purchase = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True, 
@@ -125,6 +123,8 @@ class Source(models.Model):
     remark = models.CharField(max_length=255, blank=True)
     acceptability = models.CharField(max_length=4, blank=True, choices=COMMENTS, 
         help_text='A reference from buyers\' comments (aka. The product quality). Help to make decision on buy it or not. "Good" does not mean to buy')
+    # status = models.CharField(max_length=20)
+    status = models.CharField(max_length=20, choices=STATUS, default='inbox', help_text='The workflow. Make decision to buy it or not')
     ref = models.TextField(verbose_name=_("The way it was found"), blank=True)
     # # is_good_product
     # # is_available
