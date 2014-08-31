@@ -25,7 +25,6 @@ class TopicAdmin(admin.ModelAdmin):
     inlines = [SourceInline]
     # list_display = ('title', 'id','status', 'remark', 'price', 'size', 'find_postage_fee', 'find_max_purchase', 'max_purchase') # DEBUG. control what to be displayed in the overall admin page, instead of displaying the str()
     list_display = ('title', 'id','status', 'remark', 'price', 'size', 'find_max_purchase') # control what to be displayed in the overall admin page, instead of displaying the str()
-    # list_display = ('title', 'id','status', 'remark', 'price', 'size',) # control what to be displayed in the overall admin page, instead of displaying the str()
     list_filter = ['seller', 'status']
     search_fields = ['link', 'title']
 

@@ -9,6 +9,10 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils.encoding import smart_str
 from django.utils.translation import ugettext_lazy as _
 
+# for find_max_purchase
+from decimal import *
+# getcontext().prec=6
+
 # for QuerySet()
 from django.core.urlresolvers import reverse
 
@@ -73,19 +77,41 @@ class Topic(models.Model): #Topic
         return u'%s. %s (USD %d)' %(self.id, self.title, self.price,)
 
     # the draft version
+    # def find_max_purchase(self):
+    #     USD2RMB = 6.20
+    #     USD2HKD = 7.75
+
+    #     #In USD
+    #     price = float(self.price) # need type casting
+    #     ebay_commision = price * 0.1
+    #     paypal_commision = price * (0.039) + 0.3
+    #     packing = 1.2
+    #     first_leg = 16/7.75 #HKD16 to USD
+    #     second_leg = 150/7.75 # HKD150 to USD
+    #     max_purchase = price - (ebay_commision + paypal_commision + packing + first_leg + second_leg)
+    #     return u'USD %2f,  RMB %f2' %(max_purchase, max_purchase * USD2RMB)
+
+
+    # Work in the same way as the arithmetic that people learn at school.
+    # By using Decimal instead of float
+    # Google: python float vs decimal
+    # https://docs.python.org/2/library/decimal.html
     def find_max_purchase(self):
-        USD2RMB = 6.20
-        USD2HKD = 7.75
+        getcontext().prec=6 # Decimal.getcontext().prec
+        USD2RMB = Decimal('6.20')
+        USD2HKD = Decimal('7.75')
 
         #In USD
-        price = float(self.price) # need type casting
-        ebay_commision = price * 0.1
-        paypal_commision = price * (0.039) + 0.3
-        packing = 1.2
-        first_leg = 16/7.75 #HKD16 to USD
-        second_leg = 150/7.75 # HKD150 to USD
-        max_purchase = price - (ebay_commision + paypal_commision + packing + first_leg + second_leg)
-        return u'USD %2f,  RMB %f2' %(max_purchase, max_purchase * USD2RMB)
+        price = Decimal(self.price) # str to Decimal
+        ebay_commision = price * Decimal('0.10')
+        paypal_commision = price *  Decimal('0.039') + Decimal('0.30')
+        packing = Decimal('1.20')
+        first_leg = Decimal('16')/USD2HKD #HKD16 to USD
+        second_leg =  Decimal('173')/USD2HKD # HKD150 to USD
+        additional_fee = Decimal('1.00')
+        max_purchase = price - (ebay_commision + paypal_commision + packing + first_leg + second_leg + additional_fee) 
+        
+        return u'US %s,  RMB %s' %(format(max_purchase, '0.2f'), format(max_purchase * USD2RMB, '0.2f') )
 
 
     class Meta:
