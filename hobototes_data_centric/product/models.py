@@ -65,7 +65,7 @@ class Topic(models.Model): #Topic
     tag = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
     # is_virtual_product = # build for a themetic product grouping
     price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
-    # purchase_adjectment = models.DecimalField(max_digits=6, decimal_places=2, default=0) #TODO
+# purchase_adjectment = models.DecimalField(max_digits=6, decimal_places=2, default=0) #TODO
     key_idea = models.TextField(blank=True, help_text='Use | to separate ideas')
     remark = models.CharField(max_length=255, blank=True, verbose_name=_('Remark / Description /Features'))
 
