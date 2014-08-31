@@ -26,6 +26,7 @@ Google: django markdown
 django_markdown
 https://github.com/klen/django_markdown
 [Building a blog with Django1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
+http://arunrocks.com/recreating-the-building-a-blog-in-django-screencast/
 
 ### Django "excontrib" Comments
 Google: Django comment system
