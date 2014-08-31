@@ -20,3 +20,4 @@ class TopicAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(models.Topic, TopicAdmin)
+admin.site.register(models.Source)

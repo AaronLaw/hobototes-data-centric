@@ -97,7 +97,7 @@ class Source(models.Model):
     min_quantity = models.PositiveIntegerField(blank=True, default=1, help_text='The starting quantity of purchase')
     min_purchase = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True, 
         help_text='The possible lowest purchase.')
-    quantity_of_min_purchase = models.PositiveIntegerField(blank=True)
+    quantity_of_min_purchase = models.PositiveIntegerField(blank=True, null=True)
     remark = models.CharField(max_length=255, blank=True)
     # 2014-08-02
     acceptability = models.CharField(max_length=4, blank=True, #choices=COMMENTS, 
