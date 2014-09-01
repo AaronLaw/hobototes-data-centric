@@ -17,7 +17,7 @@ class SourceInline(admin.TabularInline):
 
 class TopicAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['title', 'link', 'status', 'remark', 'key_idea',]}),
+        (None,               {'fields': ['title', 'link', 'status','reason', 'remark', 'key_idea',]}),
         ('Meta Info',	 {'fields': ['seller' , 'size'], 'classes' : ['collapse']}),
         # ('Price information', {'fields': ['price', 'purchase_adjectment'], 'classes' : ['collapse']}),
         ('Price information', {'fields': ['price', ], 'classes' : ['collapse']}),

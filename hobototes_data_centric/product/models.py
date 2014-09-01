@@ -67,6 +67,7 @@ class Topic(models.Model): #Topic
     title = models.CharField(max_length=255)
     link = models.URLField(max_length=250,  blank=True)
     status = models.CharField(max_length=16, choices=STATUS, default='new')
+    reason = models.CharField(max_length=255, verbose_name='Why it is here?')
     tag = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
     price = models.DecimalField(max_digits=6, decimal_places=2, null=True, help_text='In US Dollar')
 # purchase_adjectment = models.DecimalField(max_digits=6, decimal_places=2, default=0) #TODO
