@@ -41,19 +41,6 @@ from django.core.urlresolvers import reverse
 #         verbose_name_plural = "Blog Entries"
 #         ordering = ["-created"]
 
-class Seller(models.Model):
-    # pass
-    shop = models.CharField(max_length=50)
-    name = models.CharField(max_length=50)
-    # telphone = models.CharField(max_length=12)
-    # wechat = models.CharField(max_length=20)
-    # address = models.CharField(max_length=100)
-    rating = models.IntegerField(default=3, help_text='1 to 5 stars')
-    remark = models.CharField(max_length=255, blank=True)
-
-    def __str__(self):              # __unicode__ on Python 2
-        return u'%s. %s :: %s' %(self.id, self.shop, self.name,)
-
 class Topic(models.Model): #Topic
 
     WEIGHT_CHOICE = (
@@ -215,3 +202,16 @@ class Source(models.Model):
         verbose_name_plural = "Sources"
         ordering = ['-modified']
         # db_table = 'sources'
+
+class Seller(models.Model):
+    # pass
+    shop = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
+    # telphone = models.CharField(max_length=12)
+    # wechat = models.CharField(max_length=20)
+    # address = models.CharField(max_length=100)
+    rating = models.IntegerField(default=3, help_text='1 to 5 stars')
+    remark = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):              # __unicode__ on Python 2
+        return u'%s. %s :: %s' %(self.id, self.shop, self.name,)
