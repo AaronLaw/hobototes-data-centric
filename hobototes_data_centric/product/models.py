@@ -177,8 +177,8 @@ class Source(models.Model):
     title = models.CharField(max_length=1000, blank=True)
     topic = models.ForeignKey('topic', default=25) # defautl=25 is a virtual topic
     shop = models.CharField(max_length=50, blank=True, help_text='25 means this product is a virtual product.')
-    series = models.CharField(max_length=16, choices=SERIES)
-    catagory = models.CharField(max_length=16, blank=True, null=True)
+    series = models.CharField(max_length=20, choices=SERIES)
+    catagory = models.CharField(max_length=20, blank=True, null=True)
     tags = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
     purchase = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     min_quantity = models.PositiveIntegerField(blank=True, default=1, help_text='The starting quantity of purchase')
