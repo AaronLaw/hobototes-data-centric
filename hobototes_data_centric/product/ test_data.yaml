@@ -1,0 +1,8 @@
+- fields: {create_date: 2014-09-02, key_idea: '', link: '', modified: ! '2014-09-01
+      18:19:06+00:00', price: '20.00', reason: it is hot, remark: '', seller: 1, size: medium,
+    status: new, tag: '', title: Topic 1}
+  model: product.topic
+  pk: 1
+- fields: {name: name 1, rating: 3, remark: '', shop: Shop 1}
+  model: product.seller
+  pk: 1
