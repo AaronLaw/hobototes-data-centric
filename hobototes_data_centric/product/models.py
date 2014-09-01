@@ -109,7 +109,7 @@ class Topic(models.Model): #Topic
     # By using Decimal instead of float
     # Google: python float vs decimal
     # https://docs.python.org/2/library/decimal.html
-    def find_max_purchase(self):
+    def find_max_purchase(self): # inner function: https://realpython.com/blog/python/inner-functions-what-are-they-good-for/
         getcontext().prec=6 # Decimal.getcontext().prec
         USD2RMB = Decimal('6.20')
         USD2HKD = Decimal('7.75')
@@ -216,3 +216,6 @@ class Seller(models.Model):
 
     def __str__(self):              # __unicode__ on Python 2
         return u'%s. %s :: %s' %(self.id, self.shop, self.name,)
+
+    class Meta:
+        managed = True
