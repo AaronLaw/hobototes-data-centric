@@ -180,7 +180,7 @@ class Source(models.Model):
     series = models.CharField(max_length=20, choices=SERIES)
     # catagory = maodels.CharField(max_length=20, blank=True, null=True)
     category = models.ForeignKey('Category')
-    tags = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
+    tag = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
     purchase = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     min_quantity = models.PositiveIntegerField(blank=True, default=1, help_text='The starting quantity of purchase')
     min_purchase = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True, 
