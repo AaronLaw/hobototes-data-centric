@@ -70,7 +70,7 @@ class Topic(models.Model): #Topic
     reason = models.CharField(max_length=255, verbose_name='Why it is here?')
     tag = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
     price = models.DecimalField(max_digits=6, decimal_places=2, null=True, help_text='In US Dollar')
-# purchase_adjectment = models.DecimalField(max_digits=6, decimal_places=2, default=0) #TODO
+    purchase_adjectment = models.DecimalField(max_digits=6, decimal_places=2, default=0, help_text='to refine the final purchase')  # refinement  of the final purchase
     key_idea = models.TextField(blank=True, help_text='Use | to separate ideas')
     remark = models.CharField(max_length=255, blank=True, verbose_name=_('Remark / Description /Features'))
 
@@ -209,6 +209,7 @@ class Seller(models.Model):
     # pass
     shop = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
+    ### TODO: Considering to store these non-usually-on data in a key-value pair format in another model
     # telphone = models.CharField(max_length=12)
     # wechat = models.CharField(max_length=20)
     # address = models.CharField(max_length=100)
