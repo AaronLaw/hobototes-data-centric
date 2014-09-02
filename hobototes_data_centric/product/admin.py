@@ -28,10 +28,15 @@ class TopicAdmin(admin.ModelAdmin):
     list_filter = ['seller', 'status']
     search_fields = ['link', 'title']
 
+# For Product Category
+class CategoryAdmin(admin.ModelAdmin):
+# class EntryAdmin(MarkdownModelAdmin):
+    list_display = ['name', 'id']
+    prepopulated_fields = {'slug': ('name',  )} #[Building a blog with Django1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
 
 
 # Register your models here.
 admin.site.register(models.Topic, TopicAdmin)
 admin.site.register(models.Source, SourceAdmin)
 admin.site.register(models.Seller)
-admin.site.register(models.Category)
+admin.site.register(models.Category, CategoryAdmin)
