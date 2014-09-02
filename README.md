@@ -9,6 +9,25 @@ web apps made for daily operation of hobototes
 * Python 3.4.1
 * Django 1.7rc2
 
+Django==1.7c3
+<!-- Markdown==2.4.1 -->
+PyYAML==3.11
+<!-- django-contrib-comments==1.5
+django-markdown==0.6.1
+django-taggit==0.12.1
+ -->
+ mysqlclient==1.3.2
+
+
+## Usage
+
+	git pull | git pull origin master | git pull origin <branch> | git pull <remote name> <branch># http://ihower.tw/git/remote.html
+
+	./manage.py makemigrations
+	./manage.py migrate
+
+	./manage.py createsuperuser
+
 Django bulid a blog
 * [Building a Blog with Django 1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
 * [Building a Blog in 30 minutes with Django] (https://www.youtube.com/watch?v=srHZoj3ASmk)
