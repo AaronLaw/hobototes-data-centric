@@ -34,3 +34,4 @@ class TopicAdmin(admin.ModelAdmin):
 admin.site.register(models.Topic, TopicAdmin)
 admin.site.register(models.Source, SourceAdmin)
 admin.site.register(models.Seller)
+admin.site.register(models.Category)

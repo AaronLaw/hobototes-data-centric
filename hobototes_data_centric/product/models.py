@@ -178,7 +178,8 @@ class Source(models.Model):
     topic = models.ForeignKey('topic', default=25) # defautl=25 is a virtual topic
     shop = models.CharField(max_length=50, blank=True, help_text='25 means this product is a virtual product.')
     series = models.CharField(max_length=20, choices=SERIES)
-    catagory = models.CharField(max_length=20, blank=True, null=True)
+    # catagory = maodels.CharField(max_length=20, blank=True, null=True)
+    category = models.ForeignKey('Category')
     tags = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
     purchase = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     min_quantity = models.PositiveIntegerField(blank=True, default=1, help_text='The starting quantity of purchase')
@@ -219,3 +220,18 @@ class Seller(models.Model):
 
     class Meta:
         managed = True
+
+class Category(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(max_length=50, unique=True) #[Building a blog with Django1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
+    count = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return '%s' % self.name
+
+    class Meta:
+        managed =True
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+        ordering = ['name']
+
