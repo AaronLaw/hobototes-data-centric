@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'product',
+    'taggit', # pip install django-taggit
     # 'django.contrib.sites',
     # 'django_comments',
 )

@@ -16,6 +16,10 @@ from decimal import *
 # for QuerySet()
 from django.core.urlresolvers import reverse
 
+# for taggit
+from taggit.managers import TaggableManager
+
+
 # Create your models here.
 
 # class EntryQuerySet(models.QuerySet): #[Building a blog with Django1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
@@ -69,6 +73,7 @@ class Topic(models.Model): #Topic
     status = models.CharField(max_length=16, choices=STATUS, default='new')
     reason = models.CharField(max_length=255, verbose_name='Why it is here?')
     tag = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
+    tags = TaggableManager() # django-taggit
     price = models.DecimalField(max_digits=6, decimal_places=2, null=True, help_text='In US Dollar')
     purchase_adjectment = models.DecimalField(max_digits=6, decimal_places=2, default=0, help_text='to refine the final purchase')  # refinement  of the final purchase
     key_idea = models.TextField(blank=True, help_text='Use | to separate ideas')
@@ -181,6 +186,7 @@ class Source(models.Model):
     # catagory = maodels.CharField(max_length=20, blank=True, null=True)
     category = models.ForeignKey('Category')
     tag = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
+    tags = TaggableManager() # django-taggit
     purchase = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     min_quantity = models.PositiveIntegerField(blank=True, default=1, help_text='The starting quantity of purchase')
     min_purchase = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True, 
