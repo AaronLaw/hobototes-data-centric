@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # for find_max_purchase
 from decimal import *
-# getcontext().prec=6
+getcontext().prec=6
 
 # for QuerySet()
 from django.core.urlresolvers import reverse
