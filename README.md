@@ -28,20 +28,35 @@ django-taggit==0.12.1
 
 	./manage.py createsuperuser
 
+Pre-popular database
+Google: django fixture | django initial database
+* https://docs.djangoproject.com/en/dev/howto/initial-data/
+* https://github.com/alex/django-fixture-generator
+
+## Reference
 Django bulid a blog
 * [Building a Blog with Django 1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
 * [Building a Blog in 30 minutes with Django] (https://www.youtube.com/watch?v=srHZoj3ASmk)
+
+Blog example
+http://arunrocks.com/recreating-the-building-a-blog-in-django-screencast/
+https://www.youtube.com/watch?v=7rgph8en0Jc
+https://github.com/django/djangoproject.com/tree/master/blog
 
 * https://django-book.readthedocs.org/en/latest/# (from: http://www.meetup.com/Taipei-py/messages/boards/thread/34933702)
 
 ## Dependence / Plugins in use
 
-## In planning:
 ### Tagging
 Google: Django tagging
 https://www.djangopackages.com/packages/p/django-taggit/
 
 	sudo pip install django-taggit
+
+
+## In planning:
+### Rating
+https://github.com/dcramer/django-ratings
 
 ### Markdown
 Google: django markdown
@@ -79,3 +94,8 @@ https://github.com/stefanfoulis/django-filer (from: http://django-suit.readthedo
 ### Django Tutorials
 
 https://code.djangoproject.com/wiki/Tutorials
+
+### Image / Gallery / Media Management
+
+https://www.djangopackages.com/search/?q=image
+https://www.djangopackages.com/grids/g/gallery/
