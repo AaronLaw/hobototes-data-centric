@@ -71,19 +71,25 @@ class Topic(models.Model): #Topic
     create_date = models.DateField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     size = models.CharField(max_length=10, blank=True, 
-                                                choices=WEIGHT_CHOICE, default='medium')
+        choices=WEIGHT_CHOICE, default='medium')
     # seller= models.IntegerField(default=1, help_text='#1 reserves for virtual seller.')
-    seller= models.ForeignKey('Seller', default=1,  help_text='#1 reserves for virtual seller.')
+    seller= models.ForeignKey('Seller', default=1,  help_text=_('#1 reserves for virtual seller.'))
     # is_virtual_product = # build for a themetic product grouping
     title = models.CharField(max_length=255)
     link = models.URLField(max_length=250,  blank=True)
     status = models.CharField(max_length=16, choices=STATUS, default='new')
     reason = models.CharField(max_length=255, verbose_name='Why it is here?')
-    tag = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
+    tag = models.CharField(max_length = 50, blank=True, 
+        help_text=_('Use COMMA in ENGLISH to separate, not a Chinese comma' 
+            )
+        )
     tags = TaggableManager() # django-taggit
     price = models.DecimalField(max_digits=6, decimal_places=2, null=True, help_text='In US Dollar')
-    purchase_adjectment = models.DecimalField(max_digits=6, decimal_places=2, default=0, help_text='to refine the final purchase')  # refinement  of the final purchase
-    key_idea = models.TextField(blank=True, help_text='Use | to separate ideas')
+    purchase_adjectment = models.DecimalField(max_digits=6, decimal_places=2, default=0, 
+        help_text=_('to refine the final purchase'
+            )
+        )  # refinement  of the final purchase
+    key_idea = models.TextField(blank=True, help_text=_('Use | to separate ideas'))
     remark = models.CharField(max_length=255, blank=True, verbose_name=_('Remark / Description /Features'))
 
     def __str__(self):              # __unicode__ on Python 2
@@ -176,23 +182,23 @@ class Source(models.Model):
         ('bought', 'bought'),
         ('watch list', 'watch list'),
         ('expired', 'expried'), # https://gist.github.com/Nagyman/9502133
-        )
+    )
     # 2014-08-02
     COMMENTS = (
         ('bad', 'bad'),
         ('ok', 'seems ok'),
         ('good', 'Good!'),
-        )
+    )
 
     SERIES = (
         ('Fashionable', 'Fashionable'),
         ('Home & Garden', 'Home & Garden'),
         ('Not-another series', 'Not-another series'),
-        )
+    )
 
     TYPES = ( #Tote, Hobo, etc....better store in the other model
 
-        )
+    )
 
     # id = models.IntegerField(primary_key=True)  # AutoField
     date = models.DateField(auto_now_add = True)
@@ -204,18 +210,25 @@ class Source(models.Model):
     series = models.CharField(max_length=20, choices=SERIES)
     # catagory = maodels.CharField(max_length=20, blank=True, null=True)
     category = models.ForeignKey('Category')
-    tag = models.CharField(max_length = 50, blank=True, help_text='Use COMMA in ENGLISH to separate, not a Chinese comma')
+    tag = models.CharField(max_length = 50, blank=True, 
+        help_text=_('Use COMMA in ENGLISH to separate, not a Chinese comma'))
     tags = TaggableManager() # django-taggit
     purchase = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     min_quantity = models.PositiveIntegerField(blank=True, default=1, help_text='The starting quantity of purchase')
     min_purchase = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True, 
-        help_text='The possible lowest purchase.')
+        help_text=_('The possible lowest purchase.'))
     quantity_of_min_purchase = models.PositiveIntegerField(blank=True, null=True)
     remark = models.CharField(max_length=255, blank=True)
     acceptability = models.CharField(max_length=4, blank=True, choices=COMMENTS, 
-        help_text='A reference from buyers\' comments (aka. The product quality). Help to make decision on buy it or not. "Good" does not mean to buy')
+        help_text=_(
+            'A reference from buyers\' comments (aka. The product quality).'
+            ' Help to make decision on buy it or not. "Good" does not mean to buy'
+            )
+        )
     # status = models.CharField(max_length=20)
-    status = models.CharField(max_length=20, choices=STATUS, default='inbox', help_text='The workflow. Make decision to buy it or not')
+    status = models.CharField(max_length=20, choices=STATUS, default='inbox', 
+        help_text=_('The workflow. Make decision to buy it or not')
+        )
     ref = models.TextField(verbose_name=_("The way it was found"), blank=True)
     # # is_good_product
     # # is_available
@@ -242,7 +255,7 @@ class Seller(models.Model):
     # telphone = models.CharField(max_length=12)
     # wechat = models.CharField(max_length=20)
     # address = models.CharField(max_length=100)
-    rating = models.IntegerField(default=3, help_text='1 to 5 stars')
+    rating = models.IntegerField(default=3, help_text=_('1 to 5 stars'))
     remark = models.CharField(max_length=255, blank=True)
 
     def __str__(self):              # __unicode__ on Python 2
