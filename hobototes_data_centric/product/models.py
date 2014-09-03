@@ -1,3 +1,6 @@
+"""
+All about products
+"""
 from django.db import models
 
 import datetime
@@ -10,7 +13,7 @@ from django.utils.encoding import smart_str
 from django.utils.translation import ugettext_lazy as _
 
 # for find_max_purchase
-from decimal import *
+from decimal import * # Google: django price
 getcontext().prec=6
 
 # for QuerySet()
@@ -22,12 +25,14 @@ from taggit.managers import TaggableManager
 
 # Create your models here.
 
-# class EntryQuerySet(models.QuerySet): #[Building a blog with Django1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
-
+# class EntryQuerySet(models.QuerySet): #
 #     def published(self):
 #         return self.filter(publish=True)
 
 # class Entry(models.Model):
+# """
+# An exapmle model from [Building a blog with Django1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
+# """
 #     title = models.CharField(max_length=200)
 #     body = models.TextField()
 #     slug = models.SlugField(max_length=200, unique=True)
@@ -46,7 +51,9 @@ from taggit.managers import TaggableManager
 #         ordering = ["-created"]
 
 class Topic(models.Model): #Topic
-
+    """
+    A themetic topic to collect product sources.
+    """
     WEIGHT_CHOICE = (
         ('light', 'Light'),
         ('medium', 'Medium'),
@@ -110,11 +117,19 @@ class Topic(models.Model): #Topic
         first_leg = {'light': 10, 'medium': 16, 'heavy': 16}
         return first_leg[self.size]
 
-    # Work in the same way as the arithmetic that people learn at school.
-    # By using Decimal instead of float
-    # Google: python float vs decimal
-    # https://docs.python.org/2/library/decimal.html
     def find_max_purchase(self): # inner function: https://realpython.com/blog/python/inner-functions-what-are-they-good-for/
+        """
+        Find the max purchase we can pay for a product source.
+        It is a reverse of the selling price a customer know.
+
+        Work in the same way as the arithmetic that people learn at school.
+        By using Decimal instead of float
+        Google: python float vs decimal
+        https://docs.python.org/2/library/decimal.html
+        
+        See also: Google: django price
+        https://github.com/mirumee/django-prices
+        """
         getcontext().prec=6 # Decimal.getcontext().prec
         USD2RMB = Decimal('6.20')
         USD2HKD = Decimal('7.75')
@@ -141,7 +156,6 @@ class Topic(models.Model): #Topic
 
         return 'US %s,  RMB %s' %(format(max_purchase, '0.2f'), format(max_purchase * USD2RMB, '0.2f') )
 
-
     class Meta:
         managed = True
         verbose_name = "Product Topic"
@@ -150,6 +164,11 @@ class Topic(models.Model): #Topic
         # db_table = 'product_topic'
 
 class Source(models.Model):
+    """
+    A product sources.
+
+    We can find a source from a website, or from a market place.
+    """
     STATUS = (
         ('inbox', 'inbox'),
         ('reject', 'reject'),
@@ -181,7 +200,7 @@ class Source(models.Model):
     link = models.URLField()
     title = models.CharField(max_length=1000, blank=True)
     topic = models.ForeignKey('topic', default=25) # defautl=25 is a virtual topic
-    shop = models.CharField(max_length=50, blank=True, help_text='25 means this product is a virtual product.')
+    shop = models.CharField(max_length=50, blank=True, help_text=_('25 means this product is a virtual product.'))
     series = models.CharField(max_length=20, choices=SERIES)
     # catagory = maodels.CharField(max_length=20, blank=True, null=True)
     category = models.ForeignKey('Category')
@@ -212,7 +231,11 @@ class Source(models.Model):
         # db_table = 'sources'
 
 class Seller(models.Model):
-    # pass
+    """
+    A seller.
+
+    Considering to store these non-usually-on data in a key-value pair format in another model
+    """
     shop = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
     ### TODO: Considering to store these non-usually-on data in a key-value pair format in another model
@@ -229,6 +252,14 @@ class Seller(models.Model):
         managed = True
 
 class Category(models.Model):
+    """
+    A category of products.
+
+    I extract it from Source in order to reuse and saving storage space.
+    Attached to Source model.
+
+    A slug field is added. Idea from [Building a blog with Django1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
+    """
     name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=50, unique=True) #[Building a blog with Django1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
     count = models.PositiveIntegerField(default=0)
