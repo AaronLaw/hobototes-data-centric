@@ -15,6 +15,12 @@
 * [ ] 2014-09-03: use Django-Taggit-Suggest to enchance taggit (http://django-taggit.readthedocs.org/en/latest/external_apps.html)
 * [ ] 2014-09-03: remove `tag` field after the data is migrated to `tags` (which is powered by django-taggit)
 
+## Image management
+* [ ] allow upload pic to Product Topic
+* [ ] find some useful image management plugin: https://readthedocs.org/projects/tags/image/
+
+## Workflow
+
 ----
 # Notes
 
