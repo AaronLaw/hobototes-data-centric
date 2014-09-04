@@ -65,6 +65,7 @@ https://www.youtube.com/watch?v=7rgph8en0Jc
 https://github.com/django/djangoproject.com/tree/master/blog
 
 * https://django-book.readthedocs.org/en/latest/# (from: http://www.meetup.com/Taipei-py/messages/boards/thread/34933702)
+* http://www.barrymorrison.com/2012/10/zero-to-django-in-4-months-what-ive-learned-part-1/
 
 ## Dependence / Plugins I use
 
@@ -102,9 +103,11 @@ Google: django admin theme
 https://www.djangopackages.com/grids/g/admin-styling/
 http://grappelliproject.com/
 https://github.com/sehmaschine/django-grappelli
+https://bitbucket.org/izi/django-admin-tools/wiki/Home (from: http://grappelliproject.com/)
 
 ### Django frontend
 Google: django bootstrap
+https://riccardo.forina.me/bootstrap-your-django-admin-in-3-minutes/
 
 Google: django Boilerplate 
 
@@ -120,3 +123,7 @@ https://code.djangoproject.com/wiki/Tutorials
 
 https://www.djangopackages.com/search/?q=image
 https://www.djangopackages.com/grids/g/gallery/
+https://github.com/stefanfoulis/django-filer (from: http://djangosuit.com)
+
+### Extend models
+https://github.com/bconstantin/django_polymorphic
