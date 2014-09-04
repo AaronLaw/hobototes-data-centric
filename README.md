@@ -3,20 +3,26 @@ hobototes-data-centric
 
 web apps made for daily operation of hobototes
 
+If you find this web apps unstable, I feel sorry about that.
+I try to be a pythoner, and am learning Django during I write this web apps.
+
+Please feel free to tell me what you like and don't like on it.
 
 ## Requirement
 * virtualenv & virtualenvwrapper
 * Python 3.4.1
 * Django 1.7rc2
+* MySQL 5.5
 
-Django==1.7c3
-<!-- Markdown==2.4.1 -->
-PyYAML==3.11
-<!-- django-contrib-comments==1.5
-django-markdown==0.6.1
-django-taggit==0.12.1
- -->
- mysqlclient==1.3.2
+and the following package in the isolated environment (exported by `pip freeze`):
+
+	Django==1.7c3
+	mysqlclient==1.3.2
+	PyYAML==3.11
+	django-taggit==0.12.1
+	#django-contrib-comments==1.5
+	# Markdown==2.4.1
+	# django-markdown==0.6.1
 
 
 ## Usage
@@ -28,10 +34,25 @@ django-taggit==0.12.1
 
 	./manage.py createsuperuser
 
-Pre-popular database
+and then go to `http://127.0.0.1:8000/admin`
+
+Pre-populate database
 Google: django fixture | django initial database
+
 * https://docs.djangoproject.com/en/dev/howto/initial-data/
 * https://github.com/alex/django-fixture-generator
+
+## Problems & Error
+
+### In v1.0.0 & v1.0.1 (the resolve version is release as v1.0.2)
+
+When deploy, there maybe a dependency error : `KeyError: "Dependency references nonexistent parent node ('taggit'`.
+This is caused by migration dependencies not correctly calculated:
+* https://code.djangoproject.com/ticket/23021 -> 
+* https://code.djangoproject.com/ticket/23008 ->
+* https://code.djangoproject.com/ticket/22970
+
+One possible solution is to delete all the migration files in `product/migrations`, and then run `/.manage.py makemigrations` and `./manage.py migrate` again to resolve it.
 
 ## Reference
 Django bulid a blog
@@ -45,7 +66,7 @@ https://github.com/django/djangoproject.com/tree/master/blog
 
 * https://django-book.readthedocs.org/en/latest/# (from: http://www.meetup.com/Taipei-py/messages/boards/thread/34933702)
 
-## Dependence / Plugins in use
+## Dependence / Plugins I use
 
 ### Tagging
 Google: Django tagging
@@ -54,7 +75,7 @@ https://www.djangopackages.com/packages/p/django-taggit/
 	sudo pip install django-taggit
 
 
-## In planning:
+## Plugins in my plan:
 ### Rating
 https://github.com/dcramer/django-ratings
 
