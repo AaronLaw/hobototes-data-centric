@@ -214,6 +214,7 @@ class Source(models.Model):
         help_text=_('Use COMMA in ENGLISH to separate, not a Chinese comma'))
     tags = TaggableManager() # django-taggit
     purchase = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    related= models.ManyToManyField('self',null=True,blank=True) # self-reference to a similar product source
     min_quantity = models.PositiveIntegerField(blank=True, default=1, help_text='The starting quantity of purchase')
     min_purchase = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True, 
         help_text=_('The possible lowest purchase.'))
@@ -234,7 +235,7 @@ class Source(models.Model):
     # # is_available
 
     def __str__(self):              # __unicode__ on Python 2
-        return u'%s' % self.id
+        return u'%s. %s' %(self.id, self.title)
  
     class Meta:
         managed = True
