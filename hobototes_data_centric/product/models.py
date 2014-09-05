@@ -68,7 +68,7 @@ class Topic(models.Model): #Topic
         )
     # id = models.IntegerField(primary_key=True)  # AutoField
     # weight = models.CharField(max_length=10, blank=True)
-    created = models.DateField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     size = models.CharField(max_length=10, blank=True, 
         choices=WEIGHT_CHOICE, default='medium')
@@ -201,7 +201,7 @@ class Source(models.Model):
     )
 
     # id = models.IntegerField(primary_key=True)  # AutoField
-    created = models.DateField(auto_now_add = True)
+    created = models.DateTimeField(auto_now_add = True)
     modified= models.DateTimeField(auto_now = True)
     link = models.URLField()
     title = models.CharField(max_length=1000, blank=True)
