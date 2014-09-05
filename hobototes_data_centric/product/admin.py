@@ -5,7 +5,7 @@ from . import models # from pickups.models import Pickup, Comment
 #For Product Source
 class SourceAdmin(admin.ModelAdmin):
     # fields = ['id', 'title', 'link', 'status', 'shop', 'purchase', 'ref', 'remark'] # comment out to show all fields
-    list_display = ('id', 'date' ,'title', 'shop', 'purchase', 'acceptability', 'tags')#'tag') # control what to be displayed in the overall admin page, instead of displaying the str()
+    list_display = ('id', 'created' ,'title', 'shop', 'purchase', 'acceptability', 'tags')#'tag') # control what to be displayed in the overall admin page, instead of displaying the str()
     list_filter = ['status', 'series', 'topic', 'tags']
     search_fields = ['title', 'status','purchase', 'shop' ,'remark', ]
 
