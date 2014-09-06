@@ -242,6 +242,7 @@ class Source(models.Model):
         verbose_name = "Source"
         verbose_name_plural = "Sources"
         ordering = ['-modified']
+        # ordering = ['-id']
         # db_table = 'sources'
 
 class Seller(models.Model):
@@ -285,5 +286,5 @@ class Category(models.Model):
         managed =True
         verbose_name = "Category"
         verbose_name_plural = "Categories"
-        ordering = ['name']
+        ordering = ['-count']
 

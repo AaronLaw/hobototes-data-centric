@@ -6,7 +6,7 @@ from . import models # from pickups.models import Pickup, Comment
 class SourceAdmin(admin.ModelAdmin):
     # fields = ['id', 'title', 'link', 'status', 'shop', 'purchase', 'ref', 'remark'] # comment out to show all fields
     list_display = ('id', 'created' ,'title', 'shop', 'purchase', 'acceptability', 'tags')#'tag') # control what to be displayed in the overall admin page, instead of displaying the str()
-    list_filter = ['status', 'series', 'topic', 'tags']
+    list_filter = ['status', 'series', 'tags', 'topic']
     search_fields = ['title', 'status','purchase', 'shop' ,'remark', ]
 
 # For Product Topic
@@ -31,7 +31,7 @@ class TopicAdmin(admin.ModelAdmin):
 # For Product Category
 class CategoryAdmin(admin.ModelAdmin):
 # class EntryAdmin(MarkdownModelAdmin):
-    list_display = ['name', 'id']
+    list_display = ['name', 'id', 'count']
     prepopulated_fields = {'slug': ('name',  )} #[Building a blog with Django1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
 
 
