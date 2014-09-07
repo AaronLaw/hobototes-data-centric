@@ -5,9 +5,9 @@ from . import models # from pickups.models import Pickup, Comment
 #For Product Source
 class SourceAdmin(admin.ModelAdmin):
     # fields = ['id', 'title', 'link', 'status', 'shop', 'purchase', 'ref', 'remark'] # comment out to show all fields
-    list_display = ('id', 'created' ,'title', 'shop', 'purchase', 'acceptability', 'tags')#'tag') # control what to be displayed in the overall admin page, instead of displaying the str()
+    list_display = ('id', 'created' ,'title', 'shop', 'purchase', 'acceptability', 'tag', 'tags')#'tag') # control what to be displayed in the overall admin page, instead of displaying the str()
     list_filter = ['status', 'series', 'tags', 'topic']
-    search_fields = ['title', 'status','purchase', 'shop' ,'remark', ]
+    search_fields = ['title', 'status','purchase', 'shop' ,'remark', 'tag']
 
 # For Product Topic
 class SourceInline(admin.TabularInline):
@@ -26,7 +26,7 @@ class TopicAdmin(admin.ModelAdmin):
     # list_display = ('title', 'id','status', 'remark', 'price', 'size', 'find_postage_fee', 'purchase_adjectment', 'max_purchase') # DEBUG. control what to be displayed in the overall admin page, instead of displaying the str()
     list_display = ('title', 'id','status', 'remark', 'price', 'size', 'find_max_purchase') # control what to be displayed in the overall admin page, instead of displaying the str()
     list_filter = ['seller', 'status', 'tags']
-    search_fields = ['link', 'title', ]
+    search_fields = ['link', 'title', 'tags' ]
 
 # For Product Category
 class CategoryAdmin(admin.ModelAdmin):
