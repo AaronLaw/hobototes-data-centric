@@ -40,6 +40,7 @@ Pre-populate database
 Google: django fixture | django initial database
 
 * https://docs.djangoproject.com/en/dev/howto/initial-data/
+* https://code.djangoproject.com/wiki/Fixtures
 * https://github.com/alex/django-fixture-generator
 
 ## Problems & Error
@@ -64,6 +65,7 @@ http://arunrocks.com/recreating-the-building-a-blog-in-django-screencast/
 https://www.youtube.com/watch?v=7rgph8en0Jc
 https://github.com/django/djangoproject.com/tree/master/blog
 
+* http://www.tangowithdjango.com/book/index.html
 * https://django-book.readthedocs.org/en/latest/# (from: http://www.meetup.com/Taipei-py/messages/boards/thread/34933702)
 * http://www.barrymorrison.com/2012/10/zero-to-django-in-4-months-what-ive-learned-part-1/
 
@@ -98,9 +100,14 @@ http://django-autocomplete-light.readthedocs.org/en/latest/
 https://github.com/yourlabs/django-autocomplete-light/tree/master
 https://github.com/yourlabs/django-autocomplete-light/tree/master/test_project/non_admin
 
-### Django Admin interface
-Google: django admin 2
+### Address book
+https://www.djangopackages.com/packages/p/django-cities-light/
 
+### Django Admin interface
+https://code.djangoproject.com/wiki/AdminNext
+
+Google: django admin 2
+https://github.com/pydanny/django-admin2 (from: https://code.djangoproject.com/wiki/AdminNext)
 
 Google: django admin demo
 django-suit
@@ -118,9 +125,16 @@ https://riccardo.forina.me/bootstrap-your-django-admin-in-3-minutes/
 
 Google: django Boilerplate 
 
+Google: django jquery
+http://www.tangowithdjango.com/book/chapters/ajax.html
+
 ### File and Image Management
 
 https://github.com/stefanfoulis/django-filer (from: http://django-suit.readthedocs.org/en/develop/)
+
+### Django ROA
+Django-ROA (Resource Oriented Architecture)
+http://code.larlet.fr/django-roa/wiki/Home (from: https://code.djangoproject.com/wiki/AdminNext)
 
 ### Django Tutorials
 
