@@ -91,6 +91,13 @@ http://arunrocks.com/recreating-the-building-a-blog-in-django-screencast/
 Google: Django comment system
 https://github.com/django/django-contrib-comments
 
+### Auto complete
+django-autocomplete-light
+https://www.youtube.com/watch?v=fJIHiqWKUXI
+http://django-autocomplete-light.readthedocs.org/en/latest/
+https://github.com/yourlabs/django-autocomplete-light/tree/master
+https://github.com/yourlabs/django-autocomplete-light/tree/master/test_project/non_admin
+
 ### Django Admin interface
 Google: django admin 2
 

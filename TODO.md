@@ -10,14 +10,18 @@
 * [ ] 2014-09-01:  data reduce on Seller model: let QQ, Wechat, Address as a key-value pair, as they are not usually stored with each seller
 
 ## Tag
-* [ ] 2014-09-02: install Taggit
-* [ ] 2014-09-03: use Django-Taggit to tag (https://readthedocs.org/projects/django-taggit/)
+* [x] 2014-09-02: install Taggit
+* [x] 2014-09-03: use Django-Taggit to tag (https://readthedocs.org/projects/django-taggit/)
 * [ ] 2014-09-03: use Django-Taggit-Suggest to enchance taggit (http://django-taggit.readthedocs.org/en/latest/external_apps.html)
 * [ ] 2014-09-03: remove `tag` field after the data is migrated to `tags` (which is powered by django-taggit)
 
 ## Image management
-* [ ] allow upload pic to Product Topic
+* [ ] 2014-09-08: allow upload pic to Product Topic
 * [ ] find some useful image management plugin: https://readthedocs.org/projects/tags/image/
+
+## Business Overview
+* [ ] 2014-09-08: keep ratio of AUC/BIN to  3:7
+    ** [ ] 2014-09-08: group by month
 
 ## Workflow
 
