@@ -89,8 +89,9 @@ class Topic(models.Model): #Topic
         help_text=_('to refine the final purchase'
             )
         )  # refinement  of the final purchase
-    key_idea = models.TextField(blank=True, help_text=_('Use | to separate ideas'))
-    remark = models.CharField(max_length=255, blank=True, verbose_name=_('Remark / Description /Features'))
+    key_idea = models.TextField(blank=True, help_text=_('How to find it. Use | to separate ideas'))
+    remark = models.TextField(blank=True, verbose_name=_('Remark / Description /Features')
+        help_text=_('About the product itself.'))
 
     def __str__(self):              # __unicode__ on Python 2
         return u'%s. %s (USD %d)' %(self.id, self.title, self.price,)
