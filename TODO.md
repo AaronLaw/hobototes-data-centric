@@ -20,6 +20,7 @@
 * [ ] find some useful image management plugin: https://readthedocs.org/projects/tags/image/
 
 ## Business Overview
+* 2014-09-09: dashboard
 * [ ] 2014-09-08: keep ratio of AUC/BIN to  3:7
     ** [ ] 2014-09-08: group by month
 * [ ] 2014-09-08: eBay profit calculator

@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'autocomplete_light', # pip install 'django-autocomplete-light>=2.0.0a1',
+        # http://django-autocomplete-light.readthedocs.org/en/v2/install.html
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
