@@ -8,6 +8,9 @@
 	insert into `product_category`(name)  SELECT DISTINCT `category` from `competitor_sources`
 * [ ] 2014-09-02: use fixture to pre-popular the database
 * [ ] 2014-09-01:  data reduce on Seller model: let QQ, Wechat, Address as a key-value pair, as they are not usually stored with each seller
+* [ ] 2014-09-09: [華爾街之狼 所有的能力都是能被訓練的] (https://www.youtube.com/watch?v=1uUF7_svLII)
+    * [ ] 2014-09-09: estmiated price (think what if it looks beautiful, and we donno the buy-in purchase)
+    * [ ] 2014-09-09: market reference price
 
 ## Tag
 * [x] 2014-09-02: install Taggit
@@ -20,7 +23,10 @@
 * [ ] find some useful image management plugin: https://readthedocs.org/projects/tags/image/
 
 ## Business Overview
-* 2014-09-09: dashboard
+
+[華爾街之狼 所有的能力都是能被訓練的] (https://www.youtube.com/watch?v=1uUF7_svLII)
+
+* [ ] 2014-09-09: dashboard
 * [ ] 2014-09-08: keep ratio of AUC/BIN to  3:7
     ** [ ] 2014-09-08: group by month
 * [ ] 2014-09-08: eBay profit calculator
