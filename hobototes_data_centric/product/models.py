@@ -90,7 +90,7 @@ class Topic(models.Model): #Topic
             )
         )  # refinement  of the final purchase
     key_idea = models.TextField(blank=True, help_text=_('How to find it. Use | to separate ideas'))
-    remark = models.TextField(blank=True, verbose_name=_('Remark / Description /Features')
+    remark = models.TextField(blank=True, verbose_name=_('Remark / Description /Features'),
         help_text=_('About the product itself.'))
 
     def __str__(self):              # __unicode__ on Python 2
