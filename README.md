@@ -136,6 +136,9 @@ https://github.com/stefanfoulis/django-filer (from: http://django-suit.readthedo
 Django-ROA (Resource Oriented Architecture)
 http://code.larlet.fr/django-roa/wiki/Home (from: https://code.djangoproject.com/wiki/AdminNext)
 
+### Django ERP
+https://github.com/django-bmf/django-bmf
+
 ### Django Tutorials
 
 https://code.djangoproject.com/wiki/Tutorials
