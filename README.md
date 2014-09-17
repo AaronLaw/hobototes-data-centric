@@ -56,6 +56,15 @@ This is caused by migration dependencies not correctly calculated:
 One possible solution is to delete all the migration files in `product/migrations`, and then run `/.manage.py makemigrations` and `./manage.py migrate` again to resolve it.
 
 ## Reference
+
+Product Source status:
+
+2014-04-16:
+	inbox
+	rejected
+	approved | Watchlist
+	bought
+
 Django bulid a blog
 * [Building a Blog with Django 1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
 * [Building a Blog in 30 minutes with Django] (https://www.youtube.com/watch?v=srHZoj3ASmk)
@@ -99,6 +108,14 @@ https://www.youtube.com/watch?v=fJIHiqWKUXI
 http://django-autocomplete-light.readthedocs.org/en/latest/
 https://github.com/yourlabs/django-autocomplete-light/tree/master
 https://github.com/yourlabs/django-autocomplete-light/tree/master/test_project/non_admin
+
+### Workflow
+
+> Managing state and transitions, aka workflow.
+
+* https://github.com/kmmbvnr/django-viewflow
+* https://gist.github.com/Nagyman/9502133 says workflow is a FSM (aka Finite State Machine).
+* https://www.ruby-toolbox.com/categories/state_machines
 
 ### Address book
 https://www.djangopackages.com/packages/p/django-cities-light/
