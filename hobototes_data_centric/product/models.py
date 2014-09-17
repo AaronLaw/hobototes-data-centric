@@ -208,6 +208,7 @@ class Source(models.Model):
     title = models.CharField(max_length=1000, blank=True)
     topic = models.ForeignKey('topic', default=25) # defautl=25 is a virtual topic
     shop = models.CharField(max_length=50, blank=True, help_text=_('25 means this product is a virtual product.'))
+    # market_campine = models.ForeignKey('market_campine')
     series = models.CharField(max_length=20, choices=SERIES)
     # catagory = maodels.CharField(max_length=20, blank=True, null=True)
     category = models.ForeignKey('Category')

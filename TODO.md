@@ -37,8 +37,17 @@
 
 ## Workflow
 
+## Comments
+https://github.com/django/django-contrib-comments
+
 ----
 # Notes
+
+2014-09-16:
+
+Upgrade to Django 1.7
+
+	pip install Django==1.7
 
 2014-09-02:
 ### objective: 
