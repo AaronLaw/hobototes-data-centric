@@ -48,12 +48,20 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # for johnny-cache
+    # 'johnny.middleware.LocalStoreClearMiddleware',
+    # 'johnny.middleware.QueryCacheMiddleware',
+
+    # for setup cache
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'hobototes_data_centric.urls'
@@ -81,7 +89,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-us' # https://docs.djangoproject.com/en/dev/ref/settings/
 
 TIME_ZONE = 'Asia/Taipei'
 
@@ -103,10 +111,25 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 # SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
 # Local-memory caching
-# https://docs.djangoproject.com/en/1.5/topics/cache/
+# https://docs.djangoproject.com/en/dev/topics/cache/
+# https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-CACHES
 CACHES = {
+    # 'default': {
+    #     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    #     'LOCATION': 'unique-snowflake',
+    #     }
+    # 'filebased': {
+    #     'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+    #     'LOCATION': '/var/tmp/django_cache',
+    #     }
     'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': 'unique-snowflake'
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+
+        'TIMEOUT': 'None',
+        'VERSION': 1,
+        'CACHE_MIDDLEWARE_ALIAS': 'default',
+        'CACHE_MIDDLEWARE_SECONDS': 600,
+        'CACHE_MIDDLEWARE_KEY_PREFIX': '',
     }
 }
