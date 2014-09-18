@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = (
     'autocomplete_light', # pip install 'django-autocomplete-light>=2.0.0a1',
         # http://django-autocomplete-light.readthedocs.org/en/v2/install.html
+    'cacheops',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -113,23 +114,53 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 # Local-memory caching
 # https://docs.djangoproject.com/en/dev/topics/cache/
 # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-CACHES
-CACHES = {
-    # 'default': {
-    #     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-    #     'LOCATION': 'unique-snowflake',
-    #     }
-    # 'filebased': {
-    #     'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-    #     'LOCATION': '/var/tmp/django_cache',
-    #     }
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
+# CACHES = {
+#     # 'default': {
+#     #     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#     #     'LOCATION': 'unique-snowflake',
+#     #     }
+#     # 'filebased': {
+#     #     'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+#     #     'LOCATION': '/var/tmp/django_cache',
+#     #     }
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#         'LOCATION': '127.0.0.1:11211',
 
-        'TIMEOUT': 'None',
-        'VERSION': 1,
-        'CACHE_MIDDLEWARE_ALIAS': 'default',
-        'CACHE_MIDDLEWARE_SECONDS': 600,
-        'CACHE_MIDDLEWARE_KEY_PREFIX': '',
-    }
+#         'TIMEOUT': 'None',
+#         'VERSION': 1,
+#         'CACHE_MIDDLEWARE_ALIAS': 'default',
+#         'CACHE_MIDDLEWARE_SECONDS': 600,
+#         'CACHE_MIDDLEWARE_KEY_PREFIX': '',
+#     }
+# }
+CACHEOPS_REDIS = {
+    'host': 'localhost', # redis-server is on same machine
+    'port': 6379,        # default redis port
+    'db': 1,             # SELECT non-default redis database
+                         # using separate redis db or redis instance
+                         # is highly recommended
+    'socket_timeout': 30,
+}
+
+CACHEOPS = {
+    # Automatically cache any User.objects.get() calls for 15 minutes
+    # This includes request.user or post.author access,
+    # where Post.author is a foreign key to auth.User
+    'auth.user': ('get', 60*15),
+
+    # Automatically cache all gets, queryset fetches and counts
+    # to other django.contrib.auth models for an hour
+    'auth.*': ('all', 60*60),
+
+    # Enable manual caching on all news models with default timeout of an hour
+    # Use News.objects.cache().get(...)
+    #  or Tags.objects.filter(...).order_by(...).cache()
+    # to cache particular ORM request.
+    # Invalidation is still automatic
+    'news.*': ('just_enable', 60*60),
+
+    # Automatically cache count requests for all other models for 15 min
+    # '*.*': ('count', 60*15),
+    '*.*': ('count', 60*15),
 }
