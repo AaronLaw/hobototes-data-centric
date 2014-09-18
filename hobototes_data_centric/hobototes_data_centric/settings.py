@@ -84,6 +84,10 @@ DATABASES = {
         'PASSWORD': '0858324',
         'HOST': '127.0.0.1',
         'PORT': '3306',
+
+    # https://docs.djangoproject.com/en/dev/ref/databases/
+    # -> https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-CONN_MAX_AGE
+        'CONN_MAX_AGE' : 600,
     }
 }
 
