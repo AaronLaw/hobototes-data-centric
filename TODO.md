@@ -20,6 +20,7 @@
 * [x] 2014-09-02: install Taggit
 * [x] 2014-09-03: use Django-Taggit to tag (https://readthedocs.org/projects/django-taggit/)
 * [ ] 2014-09-03: use Django-Taggit-Suggest to enchance taggit (http://django-taggit.readthedocs.org/en/latest/external_apps.html)
+* [ ] 2014-09-17: keyword cloud http://djangosteps.wordpress.com/2011/10/21/a-keyword-cloud-in-django/
 * [ ] 2014-09-03: remove `tag` field after the data is migrated to `tags` (which is powered by django-taggit)
 
 ## Image management

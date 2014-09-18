@@ -1,7 +1,9 @@
 hobototes-data-centric
 ======================
 
-web apps made for daily operation of hobototes
+web apps made for daily operation of hobototes.
+
+heavily developed in [Django admin site] (https://docs.djangoproject.com/en/dev/ref/contrib/admin/)
 
 If you find this web apps unstable, I feel sorry about that.
 I try to be a pythoner, and am learning Django during I write this web apps.
@@ -57,6 +59,8 @@ One possible solution is to delete all the migration files in `product/migration
 
 ## Reference
 
+[Open Sourcing a Python Project the Right Way - Jeff Knupp] (http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/)
+
 Product Source status:
 
 2014-04-16:
@@ -101,6 +105,7 @@ http://arunrocks.com/recreating-the-building-a-blog-in-django-screencast/
 ### Django "excontrib" Comments
 Google: Django comment system
 https://github.com/django/django-contrib-comments
+
 
 ### Auto complete
 django-autocomplete-light
