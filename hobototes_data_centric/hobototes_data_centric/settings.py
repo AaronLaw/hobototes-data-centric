@@ -134,6 +134,7 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 #         'CACHE_MIDDLEWARE_KEY_PREFIX': '',
 #     }
 # }
+
 CACHEOPS_REDIS = {
     'host': 'localhost', # redis-server is on same machine
     'port': 6379,        # default redis port
@@ -162,5 +163,10 @@ CACHEOPS = {
 
     # Automatically cache count requests for all other models for 15 min
     # '*.*': ('count', 60*15),
-    '*.*': ('count', 60*15),
+    '*.*': ('all', 60*15),
+
+    # 'admin.*': ('all', 60*60),
+    # 'topic.*': ('all', 60*60),
+    # 'source.*': ('all', 60*60),
 }
+
