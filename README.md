@@ -82,6 +82,9 @@ https://github.com/django/djangoproject.com/tree/master/blog
 * https://django-book.readthedocs.org/en/latest/# (from: http://www.meetup.com/Taipei-py/messages/boards/thread/34933702)
 * http://www.barrymorrison.com/2012/10/zero-to-django-in-4-months-what-ive-learned-part-1/
 
+Modern Django Project Template 
+[edge - A Modern Django Project Template ](https://www.youtube.com/watch?v=8cCM18J4Nw4)
+
 ## Dependence / Plugins I use
 
 ### Tagging
