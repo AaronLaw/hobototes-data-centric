@@ -93,6 +93,9 @@ https://www.djangopackages.com/packages/p/django-taggit/
 
 	sudo pip install django-taggit
 
+### Caching
+
+Memcache, redis
 
 ## Plugins in my plan:
 ### Rating
