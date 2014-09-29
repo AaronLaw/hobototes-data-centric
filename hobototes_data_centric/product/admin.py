@@ -18,13 +18,13 @@ class SourceInline(admin.TabularInline):
 class TopicAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Main Info',               {'fields': ['title', 'link', ]}),
-        (None,               {'fields': ['status','reason', 'remark', 'tag', 'tags' ,'key_idea',]}),
+        (None,               {'fields': ['status','reason', 'requirement', 'remark', 'tag', 'tags' ,'key_idea',]}),
         ('Meta Info',	 {'fields': ['seller' , 'size'], 'classes' : ['collapse']}),
         ('Price information', {'fields': ['price', 'purchase_adjectment'], 'classes' : ['collapse']}),
     ]
     inlines = [SourceInline]
     # list_display = ('title', 'id','status', 'remark', 'price', 'size', 'find_postage_fee', 'purchase_adjectment', 'max_purchase') # DEBUG. control what to be displayed in the overall admin page, instead of displaying the str()
-    list_display = ('title', 'id','status', 'remark', 'price', 'size', 'find_max_purchase') # control what to be displayed in the overall admin page, instead of displaying the str()
+    list_display = ('title', 'id','status', 'requirement', 'remark', 'price', 'size', 'find_max_purchase') # control what to be displayed in the overall admin page, instead of displaying the str()
     list_filter = ['seller', 'status', 'tags']
     search_fields = ['link', 'title', 'tag' ]
 

@@ -66,6 +66,10 @@ class Topic(models.Model): #Topic
         ('closed', 'closed'),
         ('rejected', 'rejected'),
         )
+    REQUIREMENTS = (
+        ('restrict', 'restrict to same'),
+        ('similar', 'similar to is ok'),
+        )
     # id = models.IntegerField(primary_key=True)  # AutoField
     # weight = models.CharField(max_length=10, blank=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -79,6 +83,8 @@ class Topic(models.Model): #Topic
     link = models.URLField(max_length=250,  blank=True)
     status = models.CharField(max_length=16, choices=STATUS, default='new')
     reason = models.CharField(max_length=255, verbose_name='Why it is here?')
+    requirement = models.CharField(max_length=50, choices=REQUIREMENTS, default='similar',
+        help_text=_('Does the source we find here RESTRICT TO what the topic product look like? (think about the outlook, the made of, etc...)'))    # requirement = # [same, similar]
     tag = models.CharField(max_length = 50, blank=True, 
         help_text=_('Use COMMA in ENGLISH to separate, not a Chinese comma' 
             )
