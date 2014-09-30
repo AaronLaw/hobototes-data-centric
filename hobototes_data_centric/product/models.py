@@ -2,6 +2,8 @@
 All about products
 """
 from django.db import models
+# from models import activity
+# from activity import *
 
 import datetime
 from django.utils import timezone
@@ -83,6 +85,7 @@ class Topic(models.Model): #Topic
     link = models.URLField(max_length=250,  blank=True)
     status = models.CharField(max_length=16, choices=STATUS, default='new')
     reason = models.CharField(max_length=255, verbose_name='Why it is here?')
+    campaign = models.ForeignKey('activity.Campaign')
     requirement = models.CharField(max_length=50, choices=REQUIREMENTS, default='similar',
         help_text=_('Does the source we find here RESTRICT TO what the topic product look like? (think about the outlook, the made of, etc...)'))    # requirement = # [same, similar]
     tag = models.CharField(max_length = 50, blank=True, 
