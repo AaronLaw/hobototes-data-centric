@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.flatpages', # flatpages, use in notice board
         # https://docs.djangoproject.com/en/dev/ref/contrib/flatpages/
+    'django.contrib.webdesign',
     'activity',
     'product', # product depends activity on the marketing campaigns
     'taggit', # pip install django-taggit
