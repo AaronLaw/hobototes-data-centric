@@ -7,11 +7,11 @@
 * [x] prepare the `category` data from the old db data: extract the existing data and insert into the new table
 	insert into `product_category`(name)  SELECT DISTINCT `category` from `competitor_sources`
 * [x] 2014-09-02: use fixture to pre-popular the database
-* [a] 2014-09-01:  data reduce on Seller model: let QQ, Wechat, Address as a key-value pair, as they are not usually stored with each seller
+* [A] 2014-09-01:  data reduce on Seller model: let QQ, Wechat, Address as a key-value pair, as they are not usually stored with each seller
 * [ ] 2014-09-09: [華爾街之狼 所有的能力都是能被訓練的] (https://www.youtube.com/watch?v=1uUF7_svLII)
     * [ ] 2014-09-09: estmiated price (think what if it looks beautiful, and we donno the buy-in purchase)
     * [ ] 2014-09-09: market reference price
-* [a] 2014-09-12: for better manage the Product Topic: make a  marketing campaign as a wrapper
+* [x] 2014-09-12: for better manage the Product Topic: make a  marketing campaign as a wrapper
 * [ ] 2014-09-13: calculation on the 2nd leg fee (part 1 + part 2)
 	* [ ] 2014-09-13: part 1: calculate by the weight of the product (in 50g steps, or follow to the post office: in 10g incerment)
 	* [ ] 2014-09-13: part 2: calculate by the weight of packing (in 3 steps)

@@ -30,7 +30,7 @@ class Campaign(models.Model):
     created = models.DateTimeField(auto_now_add = True)
     modified= models.DateTimeField(auto_now = True)
     start_date = models.DateField()
-    end_date = models.DateField(default='0000-00-00')
+    end_date = models.DateField(default='0001-01-01')
     remark = models.TextField(blank=True, verbose_name=_('Remark / Description'),
         help_text=_('About the sourcing campaign.'))
     is_active = models.BooleanField(default=True)
