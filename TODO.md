@@ -48,7 +48,7 @@
 ## Comments
 https://github.com/django/django-contrib-comments
 
-## Flatpage
+## Flatpages
 https://docs.djangoproject.com/en/dev/ref/contrib/flatpages/
 
 ----

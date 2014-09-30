@@ -24,8 +24,8 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['127.0.0.1', '192.168.0.105', 'aaron213.dlinkddns.com']
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.0.103', 'aaron213.dlinkddns.com']
 
 
 # Application definition
@@ -40,13 +40,15 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.flatpages', # flatpages, use in notice board
+        # https://docs.djangoproject.com/en/dev/ref/contrib/flatpages/
     'activity',
     'product', # product depends activity on the marketing campaigns
     'taggit', # pip install django-taggit
-    # 'django.contrib.sites',
+    'django.contrib.sites', # use in flatpages,
     # 'django_comments',
 )
-# SITE_ID=1
+SITE_ID=1
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -64,6 +66,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
+
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware', # for using flatpages
 )
 
 ROOT_URLCONF = 'hobototes_data_centric.urls'

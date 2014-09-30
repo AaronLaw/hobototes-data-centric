@@ -6,7 +6,7 @@ Documentation of Hobototes database system
 
  I want to put the notice message in the front page of the website.
  Firstly, I think I should create an 'noticeboard' app to make it.
- Then, I think using flat page is ok for doing so.
+ Then, I think using flatpages is ok for doing so.
 
  https://docs.djangoproject.com/en/dev/ref/contrib/flatpages/
 
