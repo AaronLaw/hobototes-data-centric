@@ -115,6 +115,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
+
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 # Google: django set-0-id (2014-08-05)
