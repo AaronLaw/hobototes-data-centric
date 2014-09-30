@@ -27,6 +27,7 @@
 ## In General
 * [ ] 2014-09-16: auto-completion
     * [ ] 2014-10-01: auto-completion, esp on the taggit field
+* [x] 2014-10-01: make a notice board
 
 ## Image management
 * [ ] 2014-09-08: allow upload pic to Product Topic
