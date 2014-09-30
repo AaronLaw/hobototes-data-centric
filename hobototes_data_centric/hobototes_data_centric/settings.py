@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'product',
+    'activity',
+    'product', # product depends activity on the marketing campaigns
     'taggit', # pip install django-taggit
     # 'django.contrib.sites',
     # 'django_comments',

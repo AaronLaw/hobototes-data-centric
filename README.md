@@ -38,6 +38,8 @@ and the following package in the isolated environment (exported by `pip freeze`)
 
 and then go to `http://127.0.0.1:8000/admin`
 
+Product app depends on the activity apps, on the marketing campaign
+
 Pre-populate database
 Google: django fixture | django initial database
 
@@ -81,6 +83,7 @@ https://github.com/django/djangoproject.com/tree/master/blog
 * http://www.tangowithdjango.com/book/index.html
 * https://django-book.readthedocs.org/en/latest/# (from: http://www.meetup.com/Taipei-py/messages/boards/thread/34933702)
 * http://www.barrymorrison.com/2012/10/zero-to-django-in-4-months-what-ive-learned-part-1/
+* http://djangobook.py3k.cn/2.0/
 
 Modern Django Project Template 
 [edge - A Modern Django Project Template ](https://www.youtube.com/watch?v=8cCM18J4Nw4)
@@ -125,6 +128,7 @@ https://github.com/yourlabs/django-autocomplete-light/tree/master/test_project/n
 > Managing state and transitions, aka workflow.
 
 * https://github.com/kmmbvnr/django-viewflow
+* https://www.djangopackages.com/packages/p/django-viewflow/
 * https://gist.github.com/Nagyman/9502133 says workflow is a FSM (aka Finite State Machine).
 * https://www.ruby-toolbox.com/categories/state_machines
 
