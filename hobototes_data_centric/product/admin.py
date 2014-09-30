@@ -1,6 +1,8 @@
 from django.contrib import admin
 
+# from django.db import models
 from . import models # from pickups.models import Pickup, Comment
+
 
 #For Product Source
 class SourceAdmin(admin.ModelAdmin):
@@ -25,7 +27,7 @@ class TopicAdmin(admin.ModelAdmin):
     inlines = [SourceInline]
     # list_display = ('title', 'id','status', 'remark', 'price', 'size', 'find_postage_fee', 'purchase_adjectment', 'max_purchase') # DEBUG. control what to be displayed in the overall admin page, instead of displaying the str()
     list_display = ('title', 'id','status', 'requirement', 'remark', 'price', 'size', 'find_max_purchase') # control what to be displayed in the overall admin page, instead of displaying the str()
-    list_filter = ['seller', 'status', 'tags']
+    list_filter = ['campaign',  'status', 'tags'] # campaign, not activity.campaign, as it is already imported from model
     search_fields = ['link', 'title', 'tag' ]
 
 # For Product Category

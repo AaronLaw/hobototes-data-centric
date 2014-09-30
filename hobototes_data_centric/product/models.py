@@ -85,7 +85,8 @@ class Topic(models.Model): #Topic
     link = models.URLField(max_length=250,  blank=True)
     status = models.CharField(max_length=16, choices=STATUS, default='new')
     reason = models.CharField(max_length=255, verbose_name='Why it is here?')
-    campaign = models.ForeignKey('activity.Campaign', default=1)
+    campaign = models.ForeignKey('activity.Campaign', default=1, 
+        help_text=_('The campaign of this product topic'))
     requirement = models.CharField(max_length=50, choices=REQUIREMENTS, default='similar',
         help_text=_('Does the source we find here RESTRICT TO what the topic product look like? (think about the outlook, the made of, etc...)'))    # requirement = # [same, similar]
     tag = models.CharField(max_length = 50, blank=True, 
