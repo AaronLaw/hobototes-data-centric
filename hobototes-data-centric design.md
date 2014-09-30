@@ -1,6 +1,17 @@
 Documentation of Hobototes database system
 =============================
 
+### Notice board
+ 2014-10-01:
+
+ I want to put the notice message in the front page of the website.
+ Firstly, I think I should create an 'noticeboard' app to make it.
+ Then, I think using flat page is ok for doing so.
+
+ https://docs.djangoproject.com/en/dev/ref/contrib/flatpages/
+
+### Comments should be related to many models, rather than bind to only one model
+
 2014-06-20:
 The 'comments' model can link to one and only one model. (e.g. once I've linked 'comments' to 'Topic', it cannot be linked to another model like 'shoppings')
 
@@ -10,6 +21,8 @@ Google: django many one to many tables
 when I Google: Django comment system
 ]
 
+### Status of Produce source
+
 Product source
 =====
 2014-04-16
@@ -18,6 +31,8 @@ rejected
 approved | Watchlist
 bought
 expired
+
+### Short sell
 
 short sell: (2014-06-16:)
 ======

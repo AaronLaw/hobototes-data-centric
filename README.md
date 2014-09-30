@@ -100,6 +100,11 @@ https://www.djangopackages.com/packages/p/django-taggit/
 
 Memcache, redis
 
+### Flatpage
+
+I use it to create the notice board.
+https://docs.djangoproject.com/en/dev/ref/contrib/flatpages/
+
 ## Plugins in my plan:
 ### Rating
 https://github.com/dcramer/django-ratings
