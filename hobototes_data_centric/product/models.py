@@ -22,6 +22,8 @@ from django.core.urlresolvers import reverse
 # for taggit
 from taggit.managers import TaggableManager
 
+# for trim the leading & ending whitespace
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
