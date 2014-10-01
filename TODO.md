@@ -19,6 +19,7 @@
 
 ## Stock
 * [ ] 2014-10-01: update the stock amount when save (https://docs.djangoproject.com/en/1.7/ref/models/instances/#updating-attributes-based-on-existing-fields)
+* [ ] 2014-10-02: create a histogram as an information board
 
 ## Tag
 * [x] 2014-09-02: install Taggit
