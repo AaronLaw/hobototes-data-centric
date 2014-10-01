@@ -105,6 +105,27 @@ class Topic(models.Model): #Topic
     def __str__(self):              # __unicode__ on Python 2
         return u'%s. %s (USD %d)' %(self.id, self.title, self.price,)
 
+    def save(self,  *args,  **kwargs):
+        '''
+        Override the save() method, in order to trim the starting & ending whitespace in a title
+
+        ref: Google: django super save -> https://docs.djangoproject.com/en/1.7/topics/db/models/ -> the "Overriding predefined model methods" section
+        '''
+        # test if I can override the save()
+        # self.name = 'aaron'
+        # super(Campaign, self).save(*args, **kwargs) # Call the "real" save() method.
+        
+        # the actual code that trims whitespace
+        # ref: Google: trim string -> http://stackoverflow.com/questions/5043012/django-trim-whitespaces-from-charfield
+        try:
+            self.title = self.title.strip()
+            self.tag = self.tag.strip()
+            raise ValidationError('The whitespace is trimmed.')
+        except ValidationError as e:
+            print(e)
+
+        super(Campaign, self).save(*args, **kwargs) # Call the "real" save() method.
+
     # the draft version
     # def find_max_purchase(self):
     #     USD2RMB = 6.20
@@ -247,6 +268,26 @@ class Source(models.Model):
 
     def __str__(self):              # __unicode__ on Python 2
         return u'%s. %s' %(self.id, self.title)
+
+    def save(self,  *args,  **kwargs):
+        '''
+        Override the save() method, in order to trim the starting & ending whitespace in a title
+
+        ref: Google: django super save -> https://docs.djangoproject.com/en/1.7/topics/db/models/ -> the "Overriding predefined model methods" section
+        '''
+        # test if I can override the save()
+        # self.name = 'aaron'
+        # super(Campaign, self).save(*args, **kwargs) # Call the "real" save() method.
+        
+        # the actual code that trims whitespace
+        # ref: Google: trim string -> http://stackoverflow.com/questions/5043012/django-trim-whitespaces-from-charfield
+        try:
+            self.title = self.title.strip()
+            raise ValidationError('The whitespace is trimmed.')
+        except ValidationError as e:
+            print(e)
+
+        super(Campaign, self).save(*args, **kwargs) # Call the "real" save() method.
  
     class Meta:
         managed = True
