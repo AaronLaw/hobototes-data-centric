@@ -2,8 +2,6 @@
 All about products
 """
 from django.db import models
-# from models import activity
-# from activity import *
 
 import datetime
 from django.utils import timezone
@@ -81,6 +79,12 @@ class Topic(models.Model): #Topic
     # seller= models.IntegerField(default=1, help_text='#1 reserves for virtual seller.')
     seller= models.ForeignKey('Seller', default=1,  help_text=_('#1 reserves for virtual seller.'))
     # is_virtual_product = # build for a themetic product grouping
+    market_reference_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, help_text='In US Dollar')
+    price = models.DecimalField(max_digits=6, decimal_places=2, null=True, help_text='In US Dollar')
+    purchase_adjectment = models.DecimalField(max_digits=6, decimal_places=2, default=0, 
+        help_text=_('to refine the final purchase'
+            )
+        )  # refinement  of the final purchase
     title = models.CharField(max_length=255)
     link = models.URLField(max_length=250,  blank=True)
     status = models.CharField(max_length=16, choices=STATUS, default='new')
@@ -94,11 +98,6 @@ class Topic(models.Model): #Topic
             )
         )
     tags = TaggableManager() # django-taggit
-    price = models.DecimalField(max_digits=6, decimal_places=2, null=True, help_text='In US Dollar')
-    purchase_adjectment = models.DecimalField(max_digits=6, decimal_places=2, default=0, 
-        help_text=_('to refine the final purchase'
-            )
-        )  # refinement  of the final purchase
     key_idea = models.TextField(blank=True, help_text=_('How to find it. Use | to separate ideas'))
     remark = models.TextField(blank=True, verbose_name=_('Remark / Description /Features'),
         help_text=_('About the product itself.'))
