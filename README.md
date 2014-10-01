@@ -60,8 +60,10 @@ This is caused by migration dependencies not correctly calculated:
 One possible solution is to delete all the migration files in `product/migrations`, and then run `/.manage.py makemigrations` and `./manage.py migrate` again to resolve it.
 
 ## Reference
-
+RealPython
 [Open Sourcing a Python Project the Right Way - Jeff Knupp] (http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/)
+http://codecondo.com/web-scraping-python/
+http://www.fullstackpython.com/best-python-resources.html
 
 Product Source status:
 
@@ -175,6 +177,9 @@ http://code.larlet.fr/django-roa/wiki/Home (from: https://code.djangoproject.com
 
 ### Django ERP
 https://github.com/django-bmf/django-bmf
+
+### Dashboard
+http://code.tutsplus.com/tutorials/adding-charts-to-your-site-with-highcharts--cms-21692
 
 ### Django Tutorials
 
