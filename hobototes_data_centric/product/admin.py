@@ -7,6 +7,13 @@ from . import models # from pickups.models import Pickup, Comment
 #For Product Source
 class SourceAdmin(admin.ModelAdmin):
     # fields = ['id', 'title', 'link', 'status', 'shop', 'purchase', 'ref', 'remark'] # comment out to show all fields
+    fieldsets = [
+        ('Main Inforamtion',               {'fields': [ 'link', 'title','shop', ]}),
+        ('Price information', {'fields': ['purchase', 'min_quantity','min_purchase', 'quantity_of_min_purchase',  ], }),
+        ('Relational (Grouping purpose)',               {'fields': ['topic','series', 'category' ,]}),
+        ('Meta Infomation',    {'fields': ['tag', 'tags', 'remark' , 'ref' , 'acceptability' , 'status' ], }),
+    ]
+
     list_display = ('id', 'created' , 'category', 'title', 'shop', 'purchase', 'acceptability', 'tag', 'tags')#'tag') # control what to be displayed in the overall admin page, instead of displaying the str()
     list_filter = ['status', 'series', 'category', 'tags', 'topic']
     search_fields = ['title', 'status','purchase', 'shop' ,'remark', 'tag']
