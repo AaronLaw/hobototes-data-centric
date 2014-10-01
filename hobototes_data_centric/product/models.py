@@ -238,15 +238,7 @@ class Source(models.Model):
     modified= models.DateTimeField(auto_now = True)
     link = models.URLField()
     title = models.CharField(max_length=1000, blank=True)
-    topic = models.ForeignKey('topic', default=25) # defautl=25 is a virtual topic
     shop = models.CharField(max_length=50, blank=True, help_text=_('25 means this product is a virtual product.'))
-    # market_campine = models.ForeignKey('market_campine')
-    series = models.CharField(max_length=20, choices=SERIES)
-    # catagory = maodels.CharField(max_length=20, blank=True, null=True)
-    category = models.ForeignKey('Category')
-    tag = models.CharField(max_length = 50, blank=True, 
-        help_text=_('Use COMMA in ENGLISH to separate, not a Chinese comma'))
-    tags = TaggableManager() # django-taggit
     purchase = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     # related= models.ManyToManyField('self',null=True,blank=True) # self-reference to a similar product source
     min_quantity = models.PositiveIntegerField(blank=True, default=1, help_text='The starting quantity of purchase')
@@ -254,6 +246,14 @@ class Source(models.Model):
         help_text=_('The possible lowest purchase.'))
     quantity_of_min_purchase = models.PositiveIntegerField(blank=True, null=True)
     remark = models.CharField(max_length=255, blank=True)
+    topic = models.ForeignKey('topic', default=25) # defautl=25 is a virtual topic
+    # market_campine = models.ForeignKey('market_campine')
+    series = models.CharField(max_length=20, choices=SERIES)
+    # catagory = maodels.CharField(max_length=20, blank=True, null=True)
+    category = models.ForeignKey('Category')
+    tag = models.CharField(max_length = 50, blank=True, 
+        help_text=_('Use COMMA in ENGLISH to separate, not a Chinese comma'))
+    tags = TaggableManager() # django-taggit
     acceptability = models.CharField(max_length=4, blank=True, choices=COMMENTS, 
         help_text=_(
             'A reference from buyers\' comments (aka. The product quality).'
