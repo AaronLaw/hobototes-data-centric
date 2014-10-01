@@ -12,6 +12,9 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils.encoding import smart_str
 from django.utils.translation import ugettext_lazy as _
 
+# for trim the leading & ending whitespace
+from django.core.exceptions import ValidationError
+
 
 class Campaign(models.Model):
     """
@@ -44,3 +47,23 @@ class Campaign(models.Model):
         verbose_name = "Campaign"
         verbose_name_plural = "Campaigns"
         ordering = ['-start_date']
+
+    def save(self,  *args,  **kwargs):
+        '''
+        Override the save() method, in order to trim the starting & ending whitespace in a title
+
+        ref: Google: django super save -> https://docs.djangoproject.com/en/1.7/topics/db/models/ -> the "Overriding predefined model methods" section
+        '''
+        # test if I can override the save()
+        # self.name = 'aaron'
+        # super(Campaign, self).save(*args, **kwargs) # Call the "real" save() method.
+        
+        # the actual code that trims whitespace
+        # ref: Google: trim string -> http://stackoverflow.com/questions/5043012/django-trim-whitespaces-from-charfield
+        try:
+            self.name = self.name.strip()
+            raise ValidationError('The whitespace is trimmed.')
+        except ValidationError as e:
+            print(e)
+
+        super(Campaign, self).save(*args, **kwargs) # Call the "real" save() method.
