@@ -379,6 +379,12 @@ class Category(models.Model):
     def __str__(self):
         return '%s' % self.name
 
+    def count_source(self):
+        """
+        Count the number of Source under a Category
+        """
+        return self.source_set.count() # query is lazy. cache it first here, then apply filter
+
     class Meta:
         managed =True
         verbose_name = "Category"
