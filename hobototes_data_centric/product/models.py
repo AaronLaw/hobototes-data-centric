@@ -388,6 +388,8 @@ class Category(models.Model):
     def show_count_freq(self):
         """
         Show the count as a histogram
+
+        the lenght of histogram is multiply by multipier
         """
         MULTIPIER = 5
         SIGN = '+'
