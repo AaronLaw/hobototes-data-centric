@@ -42,7 +42,7 @@ class TopicAdmin(admin.ModelAdmin):
 # For Product Category
 class CategoryAdmin(admin.ModelAdmin):
 # class EntryAdmin(MarkdownModelAdmin):
-    list_display = ['name', 'id', 'count', 'count_source']
+    list_display = ['name', 'id', 'count', 'show_count_freq']
     prepopulated_fields = {'slug': ('name',  )} #[Building a blog with Django1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
 
 

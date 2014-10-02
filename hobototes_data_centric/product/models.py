@@ -385,6 +385,15 @@ class Category(models.Model):
         """
         return self.source_set.count() # query is lazy. cache it first here, then apply filter
 
+    def show_count_freq(self):
+        """
+        Show the count as a histogram
+        """
+        MULTIPIER = 5
+        SIGN = '+'
+        freq  = self.count_source() / MULTIPIER
+        return SIGN * round(freq)
+
     class Meta:
         managed =True
         verbose_name = "Category"
