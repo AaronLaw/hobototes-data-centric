@@ -201,11 +201,42 @@ class Topic(models.Model): #Topic
 
         Depends on django-taggit
         """
+        """
         # return self.tags.get_queryset() 
         # -> [<Tag: 牛皮>, <Tag: cabas>]
         return self.tags.names()
 
+    def  count_of_source(self);
+        """
+        # return self.tags.get_queryset() 
+        # -> [<Tag: 牛皮>, <Tag: cabas>]
+        return self.tags.names()
 
+    def  count_of_source(self):
+        """
+        Return the count of related Product Source
+        (rejected source is not counted)
+
+        The number of source is grouped by status:
+        inbox / approved / bought /  watchlist / total (non-rejected)
+
+        (print Source.STATUS to see the position of status)
+
+        ref: https://docs.djangoproject.com/en/1.7/topics/db/queries/
+            https://docs.djangoproject.com/en/1.7/ref/models/querysets/#queryset-api   
+            https://docs.djangoproject.com/en/1.7/topics/db/aggregation/
+        """
+        status = Source.STATUS # get the STATUS list from class Source (rather than get from source objects)
+        q = self.source_set # query is lazy. cache it first here, then apply filter
+
+        inbox_c = q.filter(status=status[0][0]).count()
+        approved_c = q.filter(status=status[2][0]).count()
+        bought_c = q.filter(status=status[3][0]).count()
+        watchlist_c = q.filter(status=status[4][0]).count()
+        reject_c = q.filter(status=status[1][0]).count()
+        total_c = q.count()
+
+        return 'i:%s / a:%s / b:%s / w:%s / r:%s / t:%s' % (inbox_c, approved_c, bought_c, watchlist_c, reject_c, total_c)
 
     class Meta:
         managed = True
