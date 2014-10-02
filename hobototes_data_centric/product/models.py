@@ -201,13 +201,6 @@ class Topic(models.Model): #Topic
 
         Depends on django-taggit
         """
-        """
-        # return self.tags.get_queryset() 
-        # -> [<Tag: 牛皮>, <Tag: cabas>]
-        return self.tags.names()
-
-    def  count_of_source(self);
-        """
         # return self.tags.get_queryset() 
         # -> [<Tag: 牛皮>, <Tag: cabas>]
         return self.tags.names()
@@ -218,15 +211,16 @@ class Topic(models.Model): #Topic
         (rejected source is not counted)
 
         The number of source is grouped by status:
-        inbox / approved / bought /  watchlist / total (non-rejected)
+        inbox / approved / bought /  watchlist / reject / total (non-rejected)
 
-        (print Source.STATUS to see the position of status)
+        (use Source.STATUS to see the name of status, rather than hardcode them, for the future compitable)
 
-        ref: https://docs.djangoproject.com/en/1.7/topics/db/queries/
-            https://docs.djangoproject.com/en/1.7/ref/models/querysets/#queryset-api   
-            https://docs.djangoproject.com/en/1.7/topics/db/aggregation/
+        ref: 
+        https://docs.djangoproject.com/en/1.7/topics/db/queries/
+        https://docs.djangoproject.com/en/1.7/ref/models/querysets/#queryset-api   
+        https://docs.djangoproject.com/en/1.7/topics/db/aggregation/
         """
-        status = Source.STATUS # get the STATUS list from class Source (rather than get from source objects). no hardcode the status
+        status = Source.STATUS # get the STATUS list from class Source (not get from source objects). no hardcode the status
         q = self.source_set # query is lazy. cache it first here, then apply filter
 
         inbox_c = q.filter(status=status[0][0]).count()
