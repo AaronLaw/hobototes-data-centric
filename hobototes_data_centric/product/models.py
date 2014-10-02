@@ -195,6 +195,18 @@ class Topic(models.Model): #Topic
 
         return 'US %s,  RMB %s' %(format(max_purchase, '0.2f'), format(max_purchase * USD2RMB, '0.2f') )
 
+    def get_tags(self):
+        """
+        Return a string of taggit items
+
+        Depends on django-taggit
+        """
+        # return self.tags.get_queryset() 
+        # -> [<Tag: 牛皮>, <Tag: cabas>]
+        return self.tags.names()
+
+
+
     class Meta:
         managed = True
         verbose_name = "Product Topic"

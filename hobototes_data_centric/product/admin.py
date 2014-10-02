@@ -33,7 +33,7 @@ class TopicAdmin(admin.ModelAdmin):
     ]
     inlines = [SourceInline]
     # list_display = ('title', 'id','status', 'remark', 'price', 'size', 'find_postage_fee', 'purchase_adjectment', 'max_purchase') # DEBUG. control what to be displayed in the overall admin page, instead of displaying the str()
-    list_display = ('title', 'id', 'remark',  'status','size', 'market_reference_price', 'price',  'find_max_purchase', 'requirement',) # control what to be displayed in the overall admin page, instead of displaying the str()
+    list_display = ('title', 'id', 'remark',  'get_tags' ,'status','size', 'market_reference_price', 'price',  'find_max_purchase', 'requirement',) # control what to be displayed in the overall admin page, instead of displaying the str()
     list_filter = ['campaign',  'status', 'tags'] # campaign, not activity.campaign, as it is already imported from model
     search_fields = ['link', 'title', 'tag' ]
 
