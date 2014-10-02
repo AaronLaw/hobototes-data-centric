@@ -91,7 +91,7 @@ class Topic(models.Model): #Topic
     link = models.URLField(max_length=250,  blank=True)
     status = models.CharField(max_length=16, choices=STATUS, default='new')
     reason = models.CharField(max_length=255, verbose_name='Why it is here?')
-    campaign = models.ForeignKey('activity.Campaign', # no more default=1 to enforce to select a campagin when create a topic
+    campaign = models.ForeignKey('activity.Campaign', # no more default=1 to enforce to select a campaign when create a topic
         help_text=_('The campaign of this product topic'))
     requirement = models.CharField(max_length=50, choices=REQUIREMENTS, default='similar',
         help_text=_('Does the source we find here RESTRICT TO what the topic product look like? (think about the outlook, the made of, etc...)'))    # requirement = # [same, similar]
@@ -126,7 +126,7 @@ class Topic(models.Model): #Topic
         except ValidationError as e:
             print(e)
 
-        super(Campaign, self).save(*args, **kwargs) # Call the "real" save() method.
+        super(Topic, self).save(*args, **kwargs) # Call the "real" save() method.
 
     # the draft version
     # def find_max_purchase(self):
@@ -289,7 +289,7 @@ class Source(models.Model):
         except ValidationError as e:
             print(e)
 
-        super(Campaign, self).save(*args, **kwargs) # Call the "real" save() method.
+        super(Source, self).save(*args, **kwargs) # Call the "real" save() method.
  
     class Meta:
         managed = True
