@@ -193,3 +193,11 @@ https://github.com/stefanfoulis/django-filer (from: http://djangosuit.com)
 
 ### Extend models
 https://github.com/bconstantin/django_polymorphic
+
+## Code snippet
+access from the shell:
+https://docs.djangoproject.com/en/dev/topics/db/models/
+from django.db import models
+
+from product.models import *
+help(Topic)
