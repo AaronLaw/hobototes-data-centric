@@ -212,7 +212,7 @@ class Topic(models.Model): #Topic
         # -> [<Tag: 牛皮>, <Tag: cabas>]
         return self.tags.names()
 
-    def  count_of_source(self):
+    def  count_source_by_status(self):
         """
         Return the count of related Product Source
         (rejected source is not counted)
@@ -226,7 +226,7 @@ class Topic(models.Model): #Topic
             https://docs.djangoproject.com/en/1.7/ref/models/querysets/#queryset-api   
             https://docs.djangoproject.com/en/1.7/topics/db/aggregation/
         """
-        status = Source.STATUS # get the STATUS list from class Source (rather than get from source objects)
+        status = Source.STATUS # get the STATUS list from class Source (rather than get from source objects). no hardcode the status
         q = self.source_set # query is lazy. cache it first here, then apply filter
 
         inbox_c = q.filter(status=status[0][0]).count()

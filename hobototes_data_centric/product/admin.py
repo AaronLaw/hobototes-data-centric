@@ -18,6 +18,7 @@ class SourceAdmin(admin.ModelAdmin):
     list_filter = ['status', 'series', 'category', 'tags', 'topic']
     search_fields = ['title', 'status','purchase', 'shop' ,'remark', 'tag']
 
+
 # For Product Topic
 class SourceInline(admin.TabularInline):
     model = models.Source
@@ -33,9 +34,10 @@ class TopicAdmin(admin.ModelAdmin):
     ]
     inlines = [SourceInline]
     # list_display = ('title', 'id','status', 'remark', 'price', 'size', 'find_postage_fee', 'purchase_adjectment', 'max_purchase') # DEBUG. control what to be displayed in the overall admin page, instead of displaying the str()
-    list_display = ('title', 'id', 'remark',  'get_tags' ,'count_of_source' , 'status','size', 'market_reference_price', 'price',  'find_max_purchase', 'requirement',) # control what to be displayed in the overall admin page, instead of displaying the str()
+    list_display = ('title', 'id', 'remark',  'get_tags' ,'count_source_by_status', 'status','size', 'market_reference_price', 'price',  'find_max_purchase', 'requirement',) # control what to be displayed in the overall admin page, instead of displaying the str()
     list_filter = ['campaign',  'status', 'tags'] # campaign, not activity.campaign, as it is already imported from model
     search_fields = ['link', 'title', 'tag' ]
+
 
 # For Product Category
 class CategoryAdmin(admin.ModelAdmin):
