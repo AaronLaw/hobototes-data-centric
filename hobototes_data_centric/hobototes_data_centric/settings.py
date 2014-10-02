@@ -115,7 +115,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
@@ -175,7 +175,7 @@ CACHEOPS = {
 
     # Automatically cache count requests for all other models for 15 min
     # '*.*': ('count', 60*15),
-    '*.*': ('all', 60*15),
+    '*.*': ('all', 60*5),
 
     # 'admin.*': ('all', 60*60),
     # 'topic.*': ('all', 60*60),
