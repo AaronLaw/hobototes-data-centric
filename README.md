@@ -197,7 +197,23 @@ https://github.com/bconstantin/django_polymorphic
 ## Code snippet
 access from the shell:
 https://docs.djangoproject.com/en/dev/topics/db/models/
+https://docs.djangoproject.com/en/dev/topics/db/queries/
 from django.db import models
 
 from product.models import *
 help(Topic)
+
+# get Queryset
+t = Topic.objects.all()
+type(t)
+
+# get the 1st record
+t1 = Topic.objects.get(pk=1)
+type(t1)
+
+t1.source_set.count() # -> 16
+
+t1.tags
+help(t1.tags)
+t1.tags.get_queryset()
+t1.tags.all()
