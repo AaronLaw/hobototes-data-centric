@@ -280,26 +280,26 @@ class Source(models.Model):
     quantity_of_min_purchase = models.PositiveIntegerField(blank=True, null=True)
     remark = models.CharField(max_length=255, blank=True)
     topic = models.ForeignKey('topic', default=25) # defautl=25 is a virtual topic
-    # market_campine = models.ForeignKey('market_campine')
+    # campaign = models.ForeignKey('campaign')
     series = models.CharField(max_length=20, choices=SERIES)
-    # catagory = maodels.CharField(max_length=20, blank=True, null=True)
+    # catagery = maodels.CharField(max_length=20, blank=True, null=True)
     category = models.ForeignKey('Category')
     tag = models.CharField(max_length = 50, blank=True, 
         help_text=_('Use COMMA in ENGLISH to separate, not a Chinese comma'))
     tags = TaggableManager() # django-taggit
+    # is_good_product
     acceptability = models.CharField(max_length=4, blank=True, choices=COMMENTS, 
         help_text=_(
             'A reference from buyers\' comments (aka. The product quality).'
             ' Help to make decision on buy it or not. "Good" does not mean to buy'
             )
         )
+    # is_available
     # status = models.CharField(max_length=20)
     status = models.CharField(max_length=20, choices=STATUS, default='inbox', 
         help_text=_('The workflow. Make decision to buy it or not')
         )
     ref = models.TextField(verbose_name=_("The way it was found"), blank=True)
-    # # is_good_product
-    # # is_available
 
     def __str__(self):              # __unicode__ on Python 2
         return u'%s. %s' %(self.id, self.title)
@@ -308,7 +308,8 @@ class Source(models.Model):
         '''
         Override the save() method, in order to trim the starting & ending whitespace in a title
 
-        ref: Google: django super save -> https://docs.djangoproject.com/en/1.7/topics/db/models/ -> the "Overriding predefined model methods" section
+        ref: 
+        Google: django super save -> https://docs.djangoproject.com/en/1.7/topics/db/models/ -> the "Overriding predefined model methods" section
         '''
         # test if I can override the save()
         # self.name = 'aaron'
@@ -360,7 +361,8 @@ class Category(models.Model):
     I extract it from Source in order to reuse and saving storage space.
     Attached to Source model.
 
-    A slug field is added. Idea from [Building a blog with Django1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
+    A slug field is added.
+    Idea from [Building a blog with Django1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
     """
     name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=50, unique=True) #[Building a blog with Django1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
