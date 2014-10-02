@@ -266,10 +266,6 @@ class Source(models.Model):
         ('Not-another series', 'Not-another series'),
     )
 
-    TYPES = ( #Tote, Hobo, etc....better store in the other model
-
-    )
-
     # id = models.IntegerField(primary_key=True)  # AutoField
     created = models.DateTimeField(auto_now_add = True)
     modified= models.DateTimeField(auto_now = True)
