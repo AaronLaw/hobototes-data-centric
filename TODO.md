@@ -2,20 +2,27 @@
 
 ## Product
 * [x] 2014-09-01: Topic: find max purchase
-* [x] 2014-09-01:Topic: change find_max_purchase uses deciaml
+* [x] 2014-09-01: Topic: change find_max_purchase uses deciaml
 * [x] 2014-09-02: make categories as a model, rather than a list hand-coded in the Topic model.
 * [x] prepare the `category` data from the old db data: extract the existing data and insert into the new table
 	insert into `product_category`(name)  SELECT DISTINCT `category` from `competitor_sources`
 * [x] 2014-09-02: use fixture to pre-popular the database
 * [A] 2014-09-01:  data reduce on Seller model: let QQ, Wechat, Address as a key-value pair, as they are not usually stored with each seller
 * [ ] 2014-09-09: [華爾街之狼 所有的能力都是能被訓練的] (https://www.youtube.com/watch?v=1uUF7_svLII)
-    * [ ] 2014-09-09: estmiated price (think what if it looks beautiful, and we donno the buy-in purchase)
-    * [x] 2014-09-09: market reference price
+    * [x] 2014-09-09: estmiated price (think what if: it looks beautiful, and we donno the buy-in purchase...like a customer)
+    * [x] 2014-09-09: setup market reference price
 * [x] 2014-09-12: for better manage the Product Topic: make a  marketing campaign as a wrapper
+* [x] 2014-09-29: count the freq of category in real data
 * [ ] 2014-09-13: calculation on the 2nd leg fee (part 1 + part 2)
-	* [ ] 2014-09-13: part 1: calculate by the weight of the product (in 50g steps, or follow to the post office: in 10g incerment)
-	* [ ] 2014-09-13: part 2: calculate by the weight of packing (in 3 steps)
-* [x] 2014-09-29: requirement of product topic (Does the soure we found restricted to the same as the topic, or similar is OK?)
+	* [x] 2014-09-13: part 1: calculate by the weight of the product 
+		* [ ] 2014-10-03: round the weight in 10g steps
+	* [ ] 2014-09-13: part 2: calculate by the weight of packing (in 3 steps: by size)
+		* 2014-10-03: reuse the existing field 'size' for calc the packing
+* [x] 2014-09-29: requirement of product topic (Does the source we found restricted to the same as the topic, or similar is OK?)
+
+## Activity
+* [ ] 2014-10-03: setup shopping table
+* [ ] 2014-10-03: setup mass-transportation table
 
 ## Stock
 * [ ] 2014-10-01: update the stock amount when save (https://docs.djangoproject.com/en/1.7/ref/models/instances/#updating-attributes-based-on-existing-fields)

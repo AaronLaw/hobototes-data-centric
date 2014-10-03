@@ -34,6 +34,19 @@ else
 
 Now, I go to round the weight to nearest 10g (included). Don't forget the r fee is $15.5
 
+2014-09-13:
+
+in 10g increment.
+
+2nd leg fee should be made of 2 parts: the exact product weight, and the weight of packing.
+
+2014-09-30:
+
+After a deep thinking:
+The calculation of 2nd leg fee in the Product Topic should not be precise. For example: An apple cutter we'got is made of plastic. One day later, I've found an apple cutter of the same shape made of steel. So, how to determent the weight of THAT apple cutter in THAT TOPIC? (plastic vs steel)
+
+Therefore, I intend to put the calculation in SKU model also.
+
 2014-08:
 The postage fee is roughly calculated.
 It is based on the weight of the product:  {'light': 80, 'medium': 120, 'heavy':173}.
