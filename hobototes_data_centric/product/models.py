@@ -384,7 +384,7 @@ class Category(models.Model):
         the lenght of histogram is multiply by multipier
         """
         MULTIPIER = 5
-        SIGN = '+'
+        SIGN = '正'
         freq  = self.count_source() / MULTIPIER
         return SIGN * round(freq)
 
