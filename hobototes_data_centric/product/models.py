@@ -73,11 +73,12 @@ class Topic(models.Model): #Topic
         ('similar', 'similar to is ok'),
         )
     # id = models.IntegerField(primary_key=True)  # AutoField
-    # weight = models.CharField(max_length=10, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     size = models.CharField(max_length=10, blank=True, 
         choices=WEIGHT_CHOICE, default='medium')
+    weight = models.IntegerField(max_length=4, blank=True, 
+        help_text=_('Estimate the weight of this product'))
     # seller= models.IntegerField(default=1, help_text='#1 reserves for virtual seller.')
     seller= models.ForeignKey('Seller', default=1,  help_text=_('#1 reserves for virtual seller.'))
     # is_virtual_product = # build for a themetic product grouping
@@ -146,12 +147,47 @@ class Topic(models.Model): #Topic
 
     # The second leg fee (postage) used in find_max_purchase()
     # https://docs.python.org/2/tutorial/datastructures.html#dictionaries
-    def find_postage_fee(self): # REMEMBER: size -> weight
-        postage_fee = {'light': 80, 'medium': 120, 'heavy':173} # the key is the stored data in database: 'light', 'medium', 'heavy'
-        if self.size == '': # prevents bag with no size, lead to calculation error in the admin
-            self.size == 'medium'
-        return postage_fee[self.size]
+    # def find_postage_fee(self): # REMEMBER: size -> weight
+    #     postage_fee = {'light': 80, 'medium': 120, 'heavy':173} # the key is the stored data in database: 'light', 'medium', 'heavy'
+    #     if self.size == '': # prevents bag with no size, lead to calculation error in the admin
+    #         self.size == 'medium'
+    #     return postage_fee[self.size]
 
+    def find_postage_fee(self):
+        """
+        2014-10-03:
+        We need a more precious calculation on the postage fee.
+        Since we've got a formular from post office, we can calculate the exact postage fee now.
+        We've to refine the weight of a product, not just put it into 3 categories.
+
+        For example, ship to US:
+        <50g: $16
+        51~100g: $21
+        101~500g: +$1.1
+        501~2000g: +1.0
+
+        2 more things:
+        1. round weight to 10 g
+        2. the register fee
+        """
+        boundary_1 = 16
+        boundary_2 = 21
+        boundary_3 = 21+(500-100)/10 * 1.1
+        REGISTER_FEE = 15.5
+        STEP = 10
+
+        if self.weight <=50:
+            return 16 + REGISTER_FEE #HKD
+        elif self.weight <=100:
+            return 21 + REGISTER_FEE
+        elif self.weight <=500:
+            return boundary_2 + ((self.weight -100) /  STEP ) * 1.1 + REGISTER_FEE
+        elif weight <=2000:
+            return boundary_3 + ((self.weight-500) / STEP) * 1.0 + REGISTER_FEE
+        else:
+            return 99999 # use a number: don't wanna throw an exception in the calculation
+            # Cannot ship. Need to find another solution
+ 
     def find_first_leg_fee(self): # REMEMBER: size -> weight
         first_leg = {'light': 10, 'medium': 16, 'heavy': 16}
         return first_leg[self.size]
