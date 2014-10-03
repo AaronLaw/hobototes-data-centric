@@ -1,6 +1,45 @@
 Documentation of Hobototes database system
 =============================
 
+### Calculation on x-leg fee
+
+2014-10-03:
+We need a more precious calculation on the postage fee.
+Since we've got a formular from post office, we can calculate the exact postage fee now.
+We've to refine the weight of a product, not just put it into 3 categories.
+
+For example, ship to US:
+<50g: $16
+51~100g: $21
+101~500g: +$1.1
+501~2000g: +1.0
+
+That is,
+
+1st_boundary = 16
+2nd_boundary = 21
+3rd_boundary = 21+(500-100)/10 * 1.1
+STEP = 10g
+
+if weight <=50:
+    return 16 #HKD
+elif weight <=100:
+    return 21
+elif weight <=500:
+    2nd_boundary + ((weight -100) /  STEP ) * 1.1 
+elif weight <=2000:
+    3rd_boundary + ((weight-500) / STEP) * 1.0
+else
+    Cannot ship. Need to find another solution
+
+Now, I go to round the weight to nearest 10g (included). Don't forget the r fee is $15.5
+
+2014-08:
+The postage fee is roughly calculated.
+It is based on the weight of the product:  {'light': 80, 'medium': 120, 'heavy':173}.
+When the `size` is 'light', then the fee is $80.
+
+
 ### Notice board
  2014-10-01:
 
@@ -8,7 +47,7 @@ Documentation of Hobototes database system
  Firstly, I think I should create an 'noticeboard' app to make it.
  Then, I think using flatpages is ok for doing so.
 
- https://docs.djangoproject.com/en/dev/ref/contrib/flatpages/
+ https://docs.django project.com/en/dev/ref/contrib/flatpages/
 
 ### Comments should be related to many models, rather than bind to only one model
 
