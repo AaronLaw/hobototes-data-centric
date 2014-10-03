@@ -77,7 +77,7 @@ class Topic(models.Model): #Topic
     modified = models.DateTimeField(auto_now=True)
     size = models.CharField(max_length=10, blank=True, 
         choices=WEIGHT_CHOICE, default='medium')
-    weight = models.IntegerField(max_length=4, blank=True, default=0,
+    weight = models.IntegerField(max_length=4, blank=True,
         help_text=_('Estimate the weight of this product'))
     # seller= models.IntegerField(default=1, help_text='#1 reserves for virtual seller.')
     seller= models.ForeignKey('Seller', default=1,  help_text=_('#1 reserves for virtual seller.'))
