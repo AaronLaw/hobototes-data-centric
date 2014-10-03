@@ -185,7 +185,7 @@ class Topic(models.Model): #Topic
             return Decimal(21 + REGISTER_FEE)
         elif self.weight <=500:
             return Decimal(boundary_2 + ((self.weight -100) /  STEP ) * 1.1 + REGISTER_FEE)
-        elif weight <=2000:
+        elif self.weight <=2000:
             return Decimal(boundary_3 + ((self.weight-500) / STEP) * 1.0 + REGISTER_FEE)
         else:
             return 99999 # use a number: don't wanna throw an exception in the calculation
