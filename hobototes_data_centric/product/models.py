@@ -177,13 +177,13 @@ class Topic(models.Model): #Topic
         STEP = 10
 
         if self.weight <=50:
-            return 16 + REGISTER_FEE #HKD
+            return Decimal(16 + REGISTER_FEE) #HKD
         elif self.weight <=100:
-            return 21 + REGISTER_FEE
+            return Decimal(21 + REGISTER_FEE)
         elif self.weight <=500:
-            return boundary_2 + ((self.weight -100) /  STEP ) * 1.1 + REGISTER_FEE
+            return Decimal(boundary_2 + ((self.weight -100) /  STEP ) * 1.1 + REGISTER_FEE)
         elif weight <=2000:
-            return boundary_3 + ((self.weight-500) / STEP) * 1.0 + REGISTER_FEE
+            return Decimal(boundary_3 + ((self.weight-500) / STEP) * 1.0 + REGISTER_FEE)
         else:
             return 99999 # use a number: don't wanna throw an exception in the calculation
             # Cannot ship. Need to find another solution
