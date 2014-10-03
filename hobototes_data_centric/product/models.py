@@ -152,6 +152,9 @@ class Topic(models.Model): #Topic
     #     if self.size == '': # prevents bag with no size, lead to calculation error in the admin
     #         self.size == 'medium'
     #     return postage_fee[self.size]
+    def find_packing_fee(self):
+        packing_fee = {'light': 6, 'medium': 8, 'heavy':12} # the key is the stored data in database: 'light', 'medium', 'heavy'
+        return packing_fee[self.size]
 
     def find_postage_fee(self):
         """
@@ -213,7 +216,8 @@ class Topic(models.Model): #Topic
         price = Decimal(self.price) # str to Decimal
         ebay_commision = price * Decimal('0.10')
         paypal_commision = price *  Decimal('0.039') + Decimal('0.30')
-        packing = Decimal('1.20')
+        # packing = Decimal('1.20')
+        packing = self.find_packing_fee()
         # first_leg = Decimal('16')/USD2HKD #HKD16 to USD
         first_leg = (self.find_first_leg_fee())/USD2HKD #HKDto USD
         # second_leg =  Decimal('173')/USD2HKD # HKD150 to USD
