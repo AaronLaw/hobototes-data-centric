@@ -27,10 +27,10 @@ class SourceInline(admin.TabularInline):
 
 class TopicAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Main Info',               {'fields': ['title', 'link', 'market_reference_price', ]}),
-        (None,               {'fields': ['status','reason', 'campaign', 'requirement', 'remark', 'tag', 'tags' ,'key_idea',]}),
-        ('Meta Info',	 {'fields': ['seller' , 'size'], 'classes' : ['collapse']}),
-        ('Price information', {'fields': ['price', 'purchase_adjectment'], }),
+        ('Main Info',               {'fields': ['title', 'link', 'market_reference_price', 'seller', 'tag', 'tags' ]}),
+        ('Numeric information', {'fields': ['weight', 'size', 'price', 'purchase_adjectment',], }),
+        ('Meta Information',               {'fields': ['status','reason', 'campaign', 'requirement',]}),
+        (None,               {'fields': ['remark','key_idea',]}),
     ]
     inlines = [SourceInline]
     # list_display = ('title', 'id','status', 'remark', 'price', 'size', 'find_postage_fee', 'purchase_adjectment', 'max_purchase') # DEBUG. control what to be displayed in the overall admin page, instead of displaying the str()

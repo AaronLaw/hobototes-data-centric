@@ -76,14 +76,14 @@ class Topic(models.Model): #Topic
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     size = models.CharField(max_length=10, blank=True, 
-        choices=WEIGHT_CHOICE, default='medium')
+        choices=WEIGHT_CHOICE, default='medium',  help_text=_('Size affects the packing fee.'))
     weight = models.IntegerField(max_length=4, blank=True,
         help_text=_('Estimate the weight of this product'))
     # seller= models.IntegerField(default=1, help_text='#1 reserves for virtual seller.')
     seller= models.ForeignKey('Seller', default=1,  help_text=_('#1 reserves for virtual seller.'))
     # is_virtual_product = # build for a themetic product grouping
     market_reference_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, help_text='In US Dollar')
-    price = models.DecimalField(max_digits=6, decimal_places=2, null=True, help_text='In US Dollar')
+    price = models.DecimalField(max_digits=6, decimal_places=2, null=True, help_text='Our target selling price. In US Dollar')
     purchase_adjectment = models.DecimalField(max_digits=6, decimal_places=2, default=0, 
         help_text=_('to refine the final purchase'
             )
@@ -93,7 +93,7 @@ class Topic(models.Model): #Topic
     status = models.CharField(max_length=16, choices=STATUS, default='new')
     reason = models.CharField(max_length=255, verbose_name='Why it is here?')
     campaign = models.ForeignKey('activity.Campaign', # no more default=1 to enforce to select a campaign when create a topic
-        help_text=_('The campaign of this product topic'))
+        help_text=_('The campaign of this product topic under'))
     requirement = models.CharField(max_length=50, choices=REQUIREMENTS, default='similar',
         help_text=_('Does the source we find here RESTRICT TO what the topic product look like? (think about the outlook, the made of, etc...)'))    # requirement = # [same, similar]
     tag = models.CharField(max_length = 50, blank=True, 
