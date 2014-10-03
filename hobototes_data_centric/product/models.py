@@ -223,7 +223,7 @@ class Topic(models.Model): #Topic
         # second_leg =  Decimal('173')/USD2HKD # HKD150 to USD
         second_leg = (self.find_postage_fee())/USD2HKD # postage, HKD to USD
         additional_fee = Decimal('1.00')
-        max_purchase = price - (ebay_commision + paypal_commision + packing + first_leg + second_leg + additional_fee) 
+        max_purchase = price - (ebay_commision + paypal_commision + packing + first_leg + second_leg + additional_fee)  # max_purchase is breakeven
 
         if price <= 0:
             return 'You might set a price first'
