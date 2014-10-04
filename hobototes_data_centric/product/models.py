@@ -359,12 +359,37 @@ class Source(models.Model):
         # ref: Google: trim string -> http://stackoverflow.com/questions/5043012/django-trim-whitespaces-from-charfield
         try:
             self.title = self.title.strip()
-            raise ValidationError('The whitespace is trimmed.')
+            self.shop = self.shop.strip()
+            self.tag = self.replace_non_comma(self.tag)
+            raise ValidationError('The whitespace is trimmed at Source.')
         except ValidationError as e:
             print(e)
 
         super(Source, self).save(*args, **kwargs) # Call the "real" save() method.
- 
+
+    def replace_non_comma(self, text):
+        """
+        To replace the '。' or '，' when saving Tabs
+
+        Example:
+        intab = ".,。，"
+        outtab = ",,,,"
+        trantab = str.maketrans(intab, outtab)
+
+        str = "this is string example，....，wow!!!";
+        print (str.translate(trantab))
+
+        ref:
+        http://www.tutorialspoint.com/python/python_strings.htm
+         -> http://www.tutorialspoint.com/python/string_maketrans.htm
+        """
+        # import string  # Required to call maketrans function.
+
+        intab = "。，"
+        outtab = ',,'
+        transtab = str.maketrans(intab, outtab)
+        return text.translate(transtab)
+
     class Meta:
         managed = True
         verbose_name = "Source"
