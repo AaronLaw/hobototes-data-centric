@@ -153,7 +153,7 @@ class Topic(models.Model): #Topic
     #         self.size == 'medium'
     #     return postage_fee[self.size]
     def find_packing_fee(self):
-        packing_fee = {'light': 6, 'medium': 8, 'heavy':12} # the key is the stored data in database: 'light', 'medium', 'heavy'
+        packing_fee = {'light': 3, 'medium': 5, 'heavy':8} # the key is the stored data in database: 'light', 'medium', 'heavy'
         return packing_fee[self.size]
 
     def find_postage_fee(self):
@@ -214,7 +214,7 @@ class Topic(models.Model): #Topic
 
         # calculation in USD
         price = Decimal(self.price) # str to Decimal
-        ebay_commision = price * Decimal('0.10')
+        ebay_commision = price * Decimal('0.09')
         paypal_commision = price *  Decimal('0.039') + Decimal('0.30')
         # packing = Decimal('1.20')
         packing = self.find_packing_fee()
@@ -222,7 +222,7 @@ class Topic(models.Model): #Topic
         first_leg = (self.find_first_leg_fee())/USD2HKD #HKDto USD
         # second_leg =  Decimal('173')/USD2HKD # HKD150 to USD
         second_leg = (self.find_postage_fee())/USD2HKD # postage, HKD to USD
-        additional_fee = Decimal('1.00')
+        additional_fee = Decimal('1.50')
         max_purchase = price - (ebay_commision + paypal_commision + packing + first_leg + second_leg + additional_fee)  # max_purchase is breakeven
 
         if price <= 0:
