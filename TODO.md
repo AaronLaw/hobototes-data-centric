@@ -13,11 +13,11 @@
     * [x] 2014-09-09: setup market reference price
 * [x] 2014-09-12: for better manage the Product Topic: make a  marketing campaign as a wrapper
 * [x] 2014-09-29: count the freq of category in real data
-* [ ] 2014-09-13: calculation on the 2nd leg fee (part 1 + part 2)
+* [x] 2014-09-13: calculation on the 2nd leg fee (part 1 + part 2)
 	* [x] 2014-09-13: part 1: calculate by the weight of the product 
 		* [ ] 2014-10-03: round the weight in 10g steps
-	* [ ] 2014-09-13: part 2: calculate by the weight of packing (in 3 steps: by size)
-		* 2014-10-03: reuse the existing field 'size' for calc the packing
+	* [x] 2014-09-13: part 2: calculate by the weight of packing (in 3 steps: by size)
+		* [ x] 2014-10-03: reuse the existing field 'size' for calc the packing
 * [x] 2014-09-29: requirement of product topic (Does the source we found restricted to the same as the topic, or similar is OK?)
 
 ## Activity
@@ -40,7 +40,9 @@
     * [ ] 2014-10-01: auto-completion, esp on the taggit field
     * [ ] 2014-10-01: try Django-Taggit-Suggest
 * [x] 2014-10-01: make a notice board
-* [ ] 2014-10-01: trim the starting & ending whitespace in a title when save
+* [x] 2014-10-01: input usability
+	* [x] 2014-10-01: trim the starting & ending whitespace in a title when save
+	* [x] 2014-10-03: replace non-comma char with an English comma
 
 ## Image management
 * [ ] 2014-09-08: allow upload pic to Product Topic
@@ -49,6 +51,8 @@
 ## Business Overview
 
 [華爾街之狼 所有的能力都是能被訓練的] (https://www.youtube.com/watch?v=1uUF7_svLII)
+[要是你从没误过飞机，你可能浪费了太多时间] (http://www.guokr.com/article/438670/)
+[新奇加美味：当大数据走进小厨房] (http://www.guokr.com/article/437673/)
 
 * [ ] 2014-09-09: dashboard
 * [ ] 2014-09-08: keep ratio of AUC/BIN to  3:7
@@ -72,19 +76,6 @@ https://docs.djangoproject.com/en/dev/ref/contrib/flatpages/
 ### On design the calculation of the 2nd leg fee.
 
 @see ./hobototes-data-centric design.md
-
-2014-09-13:
-
-in 10g increment.
-
-2nd leg fee should be made of 2 parts: the exact product weight, and the weight of packing.
-
-2014-09-30:
-
-After a deep thinking:
-The calculation of 2nd leg fee in the Product Topic should not be precise. For example: An apple cutter we'got is made of plastic. One day later, I've found an apple cutter of the same shape made of steel. So, how to determent the weight of THAT apple cutter in THAT TOPIC? (plastic vs steel)
-
-Therefore, I intend to put the calculation in SKU model also.
 
 ### Upgrade to Django 1.7
 

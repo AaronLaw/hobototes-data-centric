@@ -361,8 +361,8 @@ class Source(models.Model):
             self.title = self.title.strip()
             self.shop = self.shop.strip()
             self.tag = self.replace_non_comma(self.tag)
-            raise ValidationError('The whitespace is trimmed at Source.')
         except ValidationError as e:
+            raise ValidationError('The whitespace is trimmed at Source.')
             print(e)
 
         super(Source, self).save(*args, **kwargs) # Call the "real" save() method.
