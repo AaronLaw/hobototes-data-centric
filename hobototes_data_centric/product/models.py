@@ -372,8 +372,8 @@ class Source(models.Model):
         To replace the '。' or '，' when saving Tabs
 
         Example:
-        intab = ".,。，"
-        outtab = ",,,,"
+        intab = ".。，"
+        outtab = ",,,"
         trantab = str.maketrans(intab, outtab)
 
         str = "this is string example，....，wow!!!";
@@ -383,8 +383,6 @@ class Source(models.Model):
         http://www.tutorialspoint.com/python/python_strings.htm
          -> http://www.tutorialspoint.com/python/string_maketrans.htm
         """
-        # import string  # Required to call maketrans function.
-
         intab = "。，"
         outtab = ',,'
         transtab = str.maketrans(intab, outtab)
