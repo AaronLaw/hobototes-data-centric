@@ -175,7 +175,7 @@ CACHEOPS = {
 
     # Automatically cache count requests for all other models for 15 min
     # '*.*': ('count', 60*15),
-    '*.*': ('all', 60*5),
+    '*.*': ('all', 6*1),
 
     # 'admin.*': ('all', 60*60),
     # 'topic.*': ('all', 60*60),
