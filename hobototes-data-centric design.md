@@ -1,6 +1,10 @@
 Documentation of Hobototes database system
 =============================
 
+### Automated Test (TDD)
+* https://docs.djangoproject.com/en/dev/topics/testing/
+* https://github.com/makaimc/awesome-django
+
 ### Calculation on x-leg fee
 
 2014-10-03:
