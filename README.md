@@ -40,7 +40,7 @@ and then go to `http://127.0.0.1:8000/admin`
 
 Product app depends on the activity apps, on the marketing campaign
 
-Pre-populate database
+### Pre-populate database
 Google: django fixture | django initial database
 
 * https://docs.djangoproject.com/en/dev/howto/initial-data/
@@ -60,21 +60,14 @@ This is caused by migration dependencies not correctly calculated:
 One possible solution is to delete all the migration files in `product/migrations`, and then run `/.manage.py makemigrations` and `./manage.py migrate` again to resolve it.
 
 ## Reference
+
 * RealPython
 * [Open Sourcing a Python Project the Right Way - Jeff Knupp] (http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/)
 * http://codecondo.com/web-scraping-python/
 * http://www.fullstackpython.com/best-python-resources.html
-* [Medium - Laravel 4 Tutorials] (http://medium.com/laravel4)
+* [Medium - Laravel 4 Tutorials] (https://medium.com/laravel-4)
     * from: Google: laravel tutorials. See also "wordpress", "django" in medium.com
 
-
-Product Source status:
-
-2014-04-16:
-	inbox
-	rejected
-	approved | Watchlist
-	bought
 
 Django bulid a blog
 * [Building a Blog with Django 1.7 in 16 mins] (https://www.youtube.com/watch?v=7rgph8en0Jc)
@@ -111,6 +104,10 @@ I use it to create the notice board.
 https://docs.djangoproject.com/en/dev/ref/contrib/flatpages/
 
 ## Plugins in my plan:
+
+### Form
+django-crispy-form
+
 ### Rating
 https://github.com/dcramer/django-ratings
 
@@ -197,26 +194,3 @@ https://github.com/stefanfoulis/django-filer (from: http://djangosuit.com)
 ### Extend models
 https://github.com/bconstantin/django_polymorphic
 
-## Code snippet
-access from the shell:
-https://docs.djangoproject.com/en/dev/topics/db/models/
-https://docs.djangoproject.com/en/dev/topics/db/queries/
-from django.db import models
-
-from product.models import *
-help(Topic)
-
-# get Queryset
-t = Topic.objects.all()
-type(t)
-
-# get the 1st record
-t1 = Topic.objects.get(pk=1)
-type(t1)
-
-t1.source_set.count() # -> 16
-
-t1.tags
-help(t1.tags)
-t1.tags.get_queryset()
-t1.tags.all()

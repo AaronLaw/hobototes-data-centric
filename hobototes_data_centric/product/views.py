@@ -1,20 +1,38 @@
-from django.http import HttpResponse
+# from django.http import HttpResponse
 # from django.http import Http404
 from django.shortcuts import get_object_or_404, get_list_or_404, render
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+from django.views import generic
 
 from product.models import *
 # ref: https://docs.djangoproject.com/en/dev/intro/tutorial03/
 
 # Create your views here.
-def index(request):
-    # topic_list = Topic.objects.all().order_by('id') #[:5]
-    topic_list = get_list_or_404(Topic, price=0)
-    context = {'topic_list': topic_list} # render(request, template, dict) 
-    return render(request, 'product/index.html', context)
 
-def detail(request, topic_id):
-    topic = get_object_or_404(Topic, pk=topic_id)
-    return render(request, 'product/detail.html', {'topic': topic})
+# The below is converted into generic view
+# def index(request):
+#     # topic_list = Topic.objects.all().order_by('id') #[:5]
+#     topic_list = get_list_or_404(Topic, price=0)
+#     context = {'topic_list': topic_list} # render(request, template, dict) 
+#     return render(request, 'product/index.html', context)
+
+# def detail(request, topic_id):
+#     topic = get_object_or_404(Topic, pk=topic_id)
+#     return render(request, 'product/detail.html', {'topic': topic})
+
+class IndexView(generic.ListView):
+    template_name = 'product/index.html'
+    # context_object_name = 'topic_list'
+
+    def get_queryset(self):
+        """Return the topics."""
+        return Topic.objects.order_by('-id') #[:5]
+
+
+class DetailView(generic.DetailView):
+    model = Topic
+    # template_name = 'product/detail.html'
 
 def max_purchase(request):
     pass
