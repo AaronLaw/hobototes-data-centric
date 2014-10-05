@@ -123,7 +123,7 @@ class Topic(models.Model): #Topic
         try:
             self.title = self.title.strip()
             self.tag = self.tag.strip()
-            raise ValidationError('The whitespace is trimmed.')
+            raise ValidationError('The whitespace is trimmed at Topic #' + str(self.id))
         except ValidationError as e:
             print(e)
 
@@ -241,6 +241,7 @@ class Topic(models.Model): #Topic
 
         Depends on django-taggit
         """
+        # http://django-taggit.readthedocs.org/en/latest/api.html#TaggableManager
         # return self.tags.get_queryset() 
         # -> [<Tag: 牛皮>, <Tag: cabas>]
         return self.tags.names()
@@ -361,8 +362,8 @@ class Source(models.Model):
             self.title = self.title.strip()
             self.shop = self.shop.strip()
             self.tag = self.replace_non_comma(self.tag)
+            raise ValidationError('The whitespace is trimmed at Source #'+ str(self.id))
         except ValidationError as e:
-            raise ValidationError('The whitespace is trimmed at Source.')
             print(e)
 
         super(Source, self).save(*args, **kwargs) # Call the "real" save() method.
