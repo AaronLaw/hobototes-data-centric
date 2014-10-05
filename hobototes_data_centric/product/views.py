@@ -1,13 +1,14 @@
 from django.http import HttpResponse
 # from django.http import Http404
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, get_list_or_404, render
 
 from product.models import *
 # ref: https://docs.djangoproject.com/en/dev/intro/tutorial03/
 
 # Create your views here.
 def index(request):
-    topic_list = Topic.objects.all().order_by('id')[:5]
+    # topic_list = Topic.objects.all().order_by('id') #[:5]
+    topic_list = get_list_or_404(Topic, price=0)
     context = {'topic_list': topic_list} # render(request, template, dict) 
     return render(request, 'product/index.html', context)
 

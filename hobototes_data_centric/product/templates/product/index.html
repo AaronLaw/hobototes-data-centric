@@ -2,7 +2,7 @@
 {% if topic_list %}
     <ul>
     {% for topic in topic_list %}
-        <li><a href="{% url 'product:detail' topic.id %}">{{ topic.id}}: {{topic.title }}</a></li>
+        <li>{{ topic.id}}: <a href="{% url 'product:detail' topic.id %}">{{topic.title }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
