@@ -6,8 +6,9 @@ urlpatterns = patterns('',
     # url(r'^$', 'hobototes_data_centric.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^product/', include('product.urls', namespace='product')),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
+    url(r'^admin/', include(admin.site.urls)),
 )
 
 
