@@ -181,6 +181,9 @@ https://github.com/django-bmf/django-bmf
 ### Dashboard
 http://code.tutsplus.com/tutorials/adding-charts-to-your-site-with-highcharts--cms-21692
 
+### Chart
+https://github.com/supritashankar/django-chartit
+
 ### Django Tutorials
 
 https://code.djangoproject.com/wiki/Tutorials
