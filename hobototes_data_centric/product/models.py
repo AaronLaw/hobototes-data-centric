@@ -178,6 +178,7 @@ class Topic(models.Model): #Topic
         boundary_3 = 21+(500-100)/10 * 1.1
         REGISTER_FEE = 15.5
         STEP = 10
+        self.weight = self.roundup(self.weight, 10)
 
         if self.weight <=50:
             return Decimal(16 + REGISTER_FEE) #HKD
@@ -191,6 +192,10 @@ class Topic(models.Model): #Topic
             return 99999 # use a number: don't wanna throw an exception in the calculation
             # Cannot ship. Need to find another solution
  
+    def  roundup(self, num, step):
+        """ return x if x % 100 == 0 else x + 100 - x % 100"""
+        return num if  num % step == 0 else num + step - num % step
+
     def find_first_leg_fee(self): # REMEMBER: size -> weight
         first_leg = {'light': 10, 'medium': 16, 'heavy': 16}
         return first_leg[self.size]
