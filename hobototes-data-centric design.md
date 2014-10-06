@@ -3,6 +3,28 @@ Documentation of Hobototes database system
 
 ### Calculation on x-leg fee
 
+2014-10-05:
+To roundup product weight in 10g increment, there are 2 ways:
+
+Solution 1: math.ceil()
+
+    >>> import math
+    >>> def roundup(x):
+    ...     return int(math.ceil(x / 100.0)) * 100
+    ... 
+    >>> roundup(100)
+    100
+    >>> roundup(101)
+    200
+
+Solution 2: %
+
+    >>> def roundup(x):
+    ...     return x if x % 100 == 0 else x + 100 - x % 100
+
+ref: Google: Python roundup -> Google: Python roundup to nearest 10 https://www.google.com.hk/#q=python+roundup+to+nearest+10&revid=936523220 -> http://stackoverflow.com/questions/8866046/python-round-up-integer-to-next-hundred
+
+
 2014-10-03:
 We need a more precious calculation on the postage fee.
 Since we've got a formular from post office, we can calculate the exact postage fee now.

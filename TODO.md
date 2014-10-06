@@ -64,7 +64,8 @@
 ## Automated Test (TDD)
 * https://docs.djangoproject.com/en/dev/topics/testing/
 * https://github.com/makaimc/awesome-django
- 
+* http://www.tdd-django-tutorial.com/
+
 ## Workflow
 
 ## Comments
