@@ -1,5 +1,7 @@
 from django.test import TestCase
 from django.db import models
+from product.models import * # import the Topic, Source, ...
+
 
 import datetime
 from django.utils import timezone
@@ -24,7 +26,13 @@ from taggit.managers import TaggableManager
 from django.core.exceptions import ValidationError
 
 # Create your tests here.
-class TopicMethodTests(TestCase):
+# ref: https://docs.djangoproject.com/en/dev/topics/testing/
+class TopicTests(TestCase):
+    t1 = Topic(title='  test  ', size='light', price=100)
+    t2 = Topic(title=' Hello', size='medium', price=230)
+
+    def setup(self):
+        pass
     # def test_save_trim(self):
     #     """
     #     save() should return an trimmed string
@@ -40,6 +48,18 @@ class TopicMethodTests(TestCase):
     #     t1 = Topic(title='test', size='light', price=100)
     #     self.assertEqual(t1.find_packing_fee(self), 3)
 
+    def test_roundup(self):
+        # t1 = Topic.objects.get(title='test')
+        # t1 = Topic.objects.get(pk=1)
+
+        self.assertEqual(self.t1.roundup(56, 10), 60)
+        self.assertEqual(self.t1.roundup(51, 10), 60)
+        self.assertEqual(self.t1.roundup(20, 10), 20)
+        self.assertEqual(self.t1.roundup(21, 10), 30)
+        self.assertEqual(self.t1.roundup(28, 10), 30)
+        self.assertEqual(self.t1.roundup(221, 10), 230)
+        self.assertEqual(self.t1.roundup(51, 100), 100)
+        self.assertEqual(self.t1.roundup(151, 100), 200)
 
 
     # def test_find_postage_fee(self):
