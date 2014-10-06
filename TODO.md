@@ -65,6 +65,7 @@
 * https://docs.djangoproject.com/en/dev/topics/testing/
 * https://github.com/makaimc/awesome-django
 * http://www.tdd-django-tutorial.com/
+* http://learnpythonthehardway.org/book/ex47.html
 
 ## Workflow
 
