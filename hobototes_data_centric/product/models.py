@@ -177,17 +177,17 @@ class Topic(models.Model): #Topic
         boundary_2 = 21
         boundary_3 = 21+(500-100)/10 * 1.1
         REGISTER_FEE = 15.5
-        STEP = 10
+        STEP = 10 # every 10g
         self.weight = self.roundup(self.weight, 10)
 
         if self.weight <=50:
-            return Decimal(16 + REGISTER_FEE) #HKD
+            return Decimal(16) # no REGISTER_FEE) , HKD
         elif self.weight <=100:
-            return Decimal(21 + REGISTER_FEE)
+            return Decimal(21) # no REGISTER_FEE)
         elif self.weight <=500:
-            return Decimal(boundary_2 + ((self.weight -100) /  STEP ) * 1.1 + REGISTER_FEE)
+            return Decimal(boundary_2 + ((self.weight -100) /  STEP ) * 1.1) # no REGISTER_FEE)
         elif self.weight <=2000:
-            return Decimal(boundary_3 + ((self.weight-500) / STEP) * 1.0 + REGISTER_FEE)
+            return Decimal(boundary_3 + ((self.weight-500) / STEP) * 1.0) # no REGISTER_FEE)
         else:
             return 99999 # use a number: don't wanna throw an exception in the calculation
             # Cannot ship. Need to find another solution

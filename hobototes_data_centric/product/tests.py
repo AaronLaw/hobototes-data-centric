@@ -28,40 +28,54 @@ from django.core.exceptions import ValidationError
 # Create your tests here.
 # ref: https://docs.djangoproject.com/en/dev/topics/testing/
 class TopicTests(TestCase):
-    t1 = Topic(title='  test  ', size='light', price=100)
-    t2 = Topic(title=' Hello', size='medium', price=230)
+    t1 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=1200, campaign_id=1)
+    t2 = Topic(title='  Hello', size='medium', price=89.93, tag='cabas, 牛皮. ', weight=875, campaign_id=2 )
+    t3 = Topic.objects.get(pk=3)
 
     def setup(self):
-        pass
-    # def test_save_trim(self):
-    #     """
-    #     save() should return an trimmed string
-    #     """
-    #     test_str = '   Testing...   '
-    #     test_topic = Topic(title=test_str)
-    #     test_topic.save()
-    #     self.assertEqual(test_topic.title, 'Testing...')
+        category1 = Category(name='Test Category')
+        category1.save()
 
-    # def test_find_packing_fee(self):
-    #     # packing_fee = {'light': 3, 'medium': 5, 'heavy':8} # the key is the stored data in database: 'light', 'medium', 'heavy'
-    #     # return packing_fee[self.size]
-    #     t1 = Topic(title='test', size='light', price=100)
-    #     self.assertEqual(t1.find_packing_fee(self), 3)
+    # def test_save_trim(self):
+    # #     """
+    # #     save() should return an trimmed string
+    # #     """
+    #     self.t1.save()
+    #     self.assertEqual(t1.title, 'test ')
+
 
     def test_roundup(self):
         # t1 = Topic.objects.get(title='test')
         # t1 = Topic.objects.get(pk=1)
-
         self.assertEqual(self.t1.roundup(56, 10), 60)
         self.assertEqual(self.t1.roundup(51, 10), 60)
-        self.assertEqual(self.t1.roundup(20, 10), 20)
-        self.assertEqual(self.t1.roundup(21, 10), 30)
+        self.assertEqual(self.t1.roundup(20.0, 10), 20.0)
+        self.assertEqual(self.t1.roundup(21.1, 10), 30.0)
         self.assertEqual(self.t1.roundup(28, 10), 30)
         self.assertEqual(self.t1.roundup(221, 10), 230)
         self.assertEqual(self.t1.roundup(51, 100), 100)
         self.assertEqual(self.t1.roundup(151, 100), 200)
 
+    def test_find_first_leg_fee(self):
+        self.assertEqual(self.t1.find_first_leg_fee(), 10)
+        self.assertEqual(self.t2.find_first_leg_fee(), 16)
 
-    # def test_find_postage_fee(self):
-    #     t1 = Topic(title='test', size='light', price=100)
-    #     self.assertEqual(t1.find_postage_fee(), 80)
+
+    def test_find_postage_fee(self):
+        # t1 = Topic(title='test', size='light', price=100)
+        self.assertEqual(self.t1.find_postage_fee(), Decimal(135.0) )
+        self.assertEqual(self.t2.find_postage_fee(), Decimal(103.0    ) )
+        t4 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=453, )
+        t7 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=101, )
+        t5 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=21, )
+        t6 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=28, )
+        self.assertEqual(t4.find_postage_fee(), Decimal(60.6) )
+        self.assertEqual(t5.find_postage_fee(), Decimal(16.0) )
+        self.assertEqual(t6.find_postage_fee(), Decimal(16.0) )
+        self.assertEqual(t7.find_postage_fee(), Decimal(22.1) )
+
+    def test_find_packing_fee(self):
+        # packing_fee = {'light': 3, 'medium': 5, 'heavy':8} # the key is the stored data in database: 'light', 'medium', 'heavy'
+        # return packing_fee[self.size]
+        self.assertEqual(self.t1.find_packing_fee(), 3)
+        self.assertEqual(self.t2.find_packing_fee(), 5)
