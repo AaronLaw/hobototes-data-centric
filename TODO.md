@@ -66,6 +66,9 @@
 * https://github.com/makaimc/awesome-django
 * http://www.tdd-django-tutorial.com/
 * http://learnpythonthehardway.org/book/ex47.html
+* https://realpython.com/blog/python/testing-in-django-part-1-best-practices-and-examples/
+* https://realpython.com/blog/python/testing-in-django-part-2-model-mommy-vs-django-testing-fixtures/
+
 
 ## Workflow
 

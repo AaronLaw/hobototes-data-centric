@@ -65,6 +65,7 @@ One possible solution is to delete all the migration files in `product/migration
 * [Open Sourcing a Python Project the Right Way - Jeff Knupp] (http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/)
 * http://codecondo.com/web-scraping-python/
 * http://www.fullstackpython.com/best-python-resources.html
+* http://www.tangowithdjango.com/book/index.html
 * [Medium - Laravel 4 Tutorials] (https://medium.com/laravel-4)
     * from: Google: laravel tutorials. See also "wordpress", "django" in medium.com
 
