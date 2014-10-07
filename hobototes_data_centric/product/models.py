@@ -189,7 +189,7 @@ class Topic(models.Model): #Topic
         elif self.weight <=2000:
             return Decimal(boundary_3 + ((self.weight-500) / STEP) * 1.0) # no REGISTER_FEE)
         else:
-            return 99999 # use a number: don't wanna throw an exception in the calculation
+            raise Exception('Above 2kg, you should try to find another solution.')
             # Cannot ship. Need to find another solution
  
     def find_2nd_class_postage_fee(self):
@@ -204,7 +204,7 @@ class Topic(models.Model): #Topic
         elif self.weight <=2000:
             return Decimal(boundary_1 + ((self.weight-30)/ STEP) * 1.2 + REGISTER_FEE)
         else:
-            raise Exception('More than 2kg, you should go to find another solution')
+            raise Exception('More than 2kg, you should try to find another solution')
 
     def  roundup(self, num, step):
         """ return x if x % 100 == 0 else x + 100 - x % 100"""
