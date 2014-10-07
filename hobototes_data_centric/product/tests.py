@@ -74,6 +74,15 @@ class TopicTests(TestCase):
         self.assertEqual(t6.find_postage_fee(), Decimal(16.0) )
         self.assertEqual(t7.find_postage_fee(), Decimal(22.1) )
 
+    def test_find_2nd_class_postage_fee(self):
+        t4 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=25, )
+        t7 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=101, )
+        t5 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=210, )
+        self.assertEqual(t4.find_2nd_class_postage_fee(), Decimal(20.5) )
+        self.assertEqual(t5.find_2nd_class_postage_fee(), Decimal(25.4) )
+        
+        
+
     def test_find_packing_fee(self):
         # packing_fee = {'light': 3, 'medium': 5, 'heavy':8} # the key is the stored data in database: 'light', 'medium', 'heavy'
         # return packing_fee[self.size]

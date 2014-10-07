@@ -3,6 +3,12 @@ Documentation of Hobototes database system
 
 ### Calculation on x-leg fee
 
+2013-10-06:
+
+Postage fee for the 2nd class air mail:
+
+<30g: $5, then every 10g: $1.2 (up to 2000gs)
+
 2014-10-05:
 To roundup product weight in 10g increment, there are 2 ways:
 
@@ -55,6 +61,8 @@ else
     Cannot ship. Need to find another solution
 
 Now, I go to round the weight to nearest 10g (included). Don't forget the r fee is $15.5
+
+
 
 2014-09-13:
 

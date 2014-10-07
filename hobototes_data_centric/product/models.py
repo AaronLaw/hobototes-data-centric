@@ -171,7 +171,7 @@ class Topic(models.Model): #Topic
 
         2 more things:
         1. round weight to 10 g
-        2. the register fee
+        2. no register fee  in E-express
         """
         boundary_1 = 16
         boundary_2 = 21
@@ -192,6 +192,20 @@ class Topic(models.Model): #Topic
             return 99999 # use a number: don't wanna throw an exception in the calculation
             # Cannot ship. Need to find another solution
  
+    def find_2nd_class_postage_fee(self):
+        """There is a register fee optional"""
+        boundary_1 = 5
+        REGISTER_FEE = 15.5
+        STEP = 10 # every 10g
+        self.weight = self.roundup(self.weight, STEP)
+
+        if self.weight <=30:
+            return Decimal(5 + REGISTER_FEE)
+        elif self.weight <=2000:
+            return Decimal(boundary_1 + ((self.weight-30)/ STEP) * 1.2 + REGISTER_FEE)
+        else:
+            raise Exception('More than 2kg, you should go to find another solution')
+
     def  roundup(self, num, step):
         """ return x if x % 100 == 0 else x + 100 - x % 100"""
         return num if  num % step == 0 else num + step - num % step
