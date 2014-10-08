@@ -69,17 +69,19 @@ class TopicTests(TestCase):
         t7 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=101, )
         t5 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=21, )
         t6 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=28, )
+        t8 = Topic(title='  test  ', size='heavy', price=69.93, tag='cabas, 牛皮', weight=2800, )
         self.assertEqual(t4.find_postage_fee(), Decimal(60.6) )
         self.assertEqual(t5.find_postage_fee(), Decimal(16.0) )
         self.assertEqual(t6.find_postage_fee(), Decimal(16.0) )
         self.assertEqual(t7.find_postage_fee(), Decimal(22.1) )
+        self.assertEqual(t8.find_postage_fee(), Exception() )
 
     def test_find_2nd_class_postage_fee(self):
         t4 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=25, )
         t7 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=101, )
         t5 = Topic(title='  test  ', size='light', price=69.93, tag='cabas, 牛皮', weight=210, )
         self.assertEqual(t4.find_2nd_class_postage_fee(), Decimal(20.5) )
-        self.assertEqual(t5.find_2nd_class_postage_fee(), Decimal(25.4) )
+        self.assertEqual(t5.find_2nd_class_postage_fee(), Decimal(42.0) )
         
         
 
