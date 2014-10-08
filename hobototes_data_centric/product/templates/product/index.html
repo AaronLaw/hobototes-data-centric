@@ -1,11 +1,9 @@
 <h1>Topic listing</h1>
-{% if topic_list %}
+
     <ul>
     {% for topic in topic_list %}
         <li>{{ topic.id}}: <a href="{% url 'product:detail' topic.id %}">{{topic.title }}</a> <a href="{{topic.link}}">[link]</a> {{topic.objects.all.count}} </li>
+    {% empty %}
+        <li>No product are available.</li>
     {% endfor %}
     </ul>
-{% else %}
-    <p>No product are available.</p>
-{% endif %}
-</ul>
