@@ -68,6 +68,7 @@ One possible solution is to delete all the migration files in `product/migration
 * http://www.tangowithdjango.com/book/index.html
 * [Medium - Laravel 4 Tutorials] (https://medium.com/laravel-4)
     * from: Google: laravel tutorials. See also "wordpress", "django" in medium.com
+* [djangoGirls on GitBook] (https://www.gitbook.io/@djangogirls)
 
 
 Django bulid a blog
@@ -182,8 +183,14 @@ https://github.com/django-bmf/django-bmf
 ### Dashboard
 http://code.tutsplus.com/tutorials/adding-charts-to-your-site-with-highcharts--cms-21692
 
+#### HTML table
+https://github.com/bradleyayers/django-tables2
+    (from: Google: how to render 2 or more queryset in django template -> http://stackoverflow.com/questions/9206373/how-to-render-a-queryset-into-a-table-template-django)
+
 ### Chart
 https://github.com/supritashankar/django-chartit
+https://github.com/makaimc/data-gravity
+https://github.com/gak/pycallgraph
 
 ### Django Tutorials
 
