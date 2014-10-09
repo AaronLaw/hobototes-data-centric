@@ -31,17 +31,17 @@ class IndexView(generic.ListView):
 
         group in template (by {% regroup %} tag)
 
+        #  How can I display a group one after one in Django template?
+
+        #  Google: how to render queryset group by category in django template?
+
+        # *  -> [django template view queryset group by] (http://stackoverflow.com/search?q=django+template+view+queryset+group+by)
+        #     * http://stackoverflow.com/questions/8678336/django-grouping-querysets-by-a-certain-field-in-template
+        #     * {regroup} tag in https://docs.djangoproject.com/en/1.7/ref/templates/builtins/
+        #        return Topic.objects.order_by('-id') #[:5]
+        #        closed = Topic.objects.filter(status='closed').order_by('-id') #[:5]
+        #        new =  Topic.objects.filter(status='new').order_by('-id') #[:5]
          """
-#  How can I display a group one after one in Django template?
-
-#  Google: how to render queryset group by category in django template?
-
-# *  -> [django template view queryset group by] (http://stackoverflow.com/search?q=django+template+view+queryset+group+by)
-#     * http://stackoverflow.com/questions/8678336/django-grouping-querysets-by-a-certain-field-in-template
-#     * {regroup} tag in https://docs.djangoproject.com/en/1.7/ref/templates/builtins/
-        # return Topic.objects.order_by('-id') #[:5]
-        # closed = Topic.objects.filter(status='closed').order_by('-id') #[:5]
-        # new =  Topic.objects.filter(status='new').order_by('-id') #[:5]
         return  Topic.objects.order_by('status') # queryset is a list
 
 
