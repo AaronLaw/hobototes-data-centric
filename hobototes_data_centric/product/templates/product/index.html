@@ -10,17 +10,20 @@ Google: how to render queryset group by category in django template?
     * http://stackoverflow.com/questions/8678336/django-grouping-querysets-by-a-certain-field-in-template
     * {regroup} tag in https://docs.djangoproject.com/en/1.7/ref/templates/builtins/
  -->
-    {% regroup object_list by status as topic_by_status %}
-    <ul>
+{% regroup object_list by status as topic_by_status %}
+<ul>
     {% for topic in topic_by_status %}
-        {{ topic.grouper }}
-        {% for topic in topic.list %}
-                {% if topic  %}
-    		        <li>{{ topic.id}}: <a href="{% url 'product:detail' topic.id %}">{{topic.title }}</a> <a href="{{topic.link}}">[link]</a> {{topic.objects.all.count}} </li>
-    	{% endif %}
+        <li>{{ topic.grouper }}
+            <ul>
+                {% for topic in topic.list %}
+                    {% if topic  %}
+                        <li>{{ topic.id}}: <a href="{% url 'product:detail' topic.id %}">{{topic.title }}</a> <a href="{{topic.link}}">[link]</a> {{topic.objects.all.count}} </li>
+                    {% endif %}
 
-    	{% empty %}
-                    <li>No product are available.</li>
-            {% endfor %}
-        {% endfor %}
-    </ul>
+                    {% empty %}
+                        <li>No product are available.</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
