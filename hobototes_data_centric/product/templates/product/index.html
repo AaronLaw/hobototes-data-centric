@@ -1,9 +1,26 @@
 <h1>Topic listing</h1>
 
+It is {% now "jS F Y H:i" %}
+{{object_list}}
+<!-- How can I display a group one after one in Django template?
+
+Google: how to render queryset group by category in django template?
+
+*  -> [django template view queryset group by] (http://stackoverflow.com/search?q=django+template+view+queryset+group+by)
+    * http://stackoverflow.com/questions/8678336/django-grouping-querysets-by-a-certain-field-in-template
+    * {regroup} tag in https://docs.djangoproject.com/en/1.7/ref/templates/builtins/
+ -->
+    {% regroup object_list by status as topic_by_status %}
     <ul>
-    {% for topic in topic_list %}
-        <li>{{ topic.id}}: <a href="{% url 'product:detail' topic.id %}">{{topic.title }}</a> <a href="{{topic.link}}">[link]</a> {{topic.objects.all.count}} </li>
-    {% empty %}
-        <li>No product are available.</li>
-    {% endfor %}
+    {% for topic in topic_by_status %}
+        {{ topic.grouper }}
+        {% for topic in topic.list %}
+                {% if topic  %}
+    		        <li>{{ topic.id}}: <a href="{% url 'product:detail' topic.id %}">{{topic.title }}</a> <a href="{{topic.link}}">[link]</a> {{topic.objects.all.count}} </li>
+    	{% endif %}
+
+    	{% empty %}
+                    <li>No product are available.</li>
+            {% endfor %}
+        {% endfor %}
     </ul>
